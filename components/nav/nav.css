@@ -1,0 +1,10 @@
+.nav
+{
+    display: flex;
+
+    margin: 0;
+
+    background-color: #273952;
+
+    flex: 1 1 auto;
+}

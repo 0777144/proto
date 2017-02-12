@@ -3,10 +3,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import H1 from '../components/h1';
+import 'app.css';
+
+import Nav from '../components/nav';
+import Logo from '../components/logo';
+
 
 ReactDOM.render(
-    <H1 text="Hello CSS Modules!"/>,
+    <Nav>
+        <Logo/>
+    </Nav>,
     document.getElementById('app')
 );
 
