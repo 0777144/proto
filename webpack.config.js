@@ -23,6 +23,7 @@ module.exports = {
             '.js',
             '.jsx',
             '.json',
+            '.scss',
             '.css'
         ]
     },
@@ -55,6 +56,28 @@ module.exports = {
                 })
             },
             {
+                test: /\.scss$/,
+                use:  ExtractTextPlugin.extract({
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules: true,
+                                sourceMap: true,
+                                camelCase: true,
+                                localIdentName: '[name]__[local]___[hash:base64:5]'
+                            }
+                        },
+                        {
+                            loader:'sass-loader',
+                            options: {
+                                sourceMap: true
+                            }
+                        }
+                    ]
+                })
+            },
+            {
                 test: /\.svg/,
                 loader: 'file-loader',
                 options: {
@@ -63,6 +86,8 @@ module.exports = {
             }
         ]
     },
+
+    devtool: 'source-map',
 
     plugins: [
         new ExtractTextPlugin('[name].bundle.css')

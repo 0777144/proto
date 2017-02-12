@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import {protoLogo} from './logo.css';
+import {protoLogo} from './logo.scss';
 
 export default class Logo extends React.Component {
     render() {
