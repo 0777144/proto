@@ -44,15 +44,24 @@ module.exports = {
             {
                 test: /\.css$/,
                 use:  ExtractTextPlugin.extract({
-                    use: {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            sourceMap: true,
-                            camelCase: true,
-                            localIdentName: '[name]__[local]___[hash:base64:5]'
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules: true,
+                                sourceMap: true,
+                                camelCase: true,
+                                localIdentName: '[name]__[local]___[hash:base64:5]',
+                                importLoaders: 1
+                            }
+                        },
+                        {
+                            loader:'postcss-loader',
+                            options: {
+                                sourceMap: true
+                            }
                         }
-                    }
+                    ]
                 })
             },
             {
@@ -65,7 +74,14 @@ module.exports = {
                                 modules: true,
                                 sourceMap: true,
                                 camelCase: true,
-                                localIdentName: '[name]__[local]___[hash:base64:5]'
+                                localIdentName: '[name]__[local]___[hash:base64:5]',
+                                importLoaders: 1
+                            }
+                        },
+                        {
+                            loader:'postcss-loader',
+                            options: {
+                                sourceMap: true
                             }
                         },
                         {
