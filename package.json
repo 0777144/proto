@@ -1,0 +1,32 @@
+{
+  "name": "proto",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "server": "nodemon server.js",
+    "build": "webpack  --progress",
+    "watch": "nodemon --quiet --config false --watch *.config.js --exec \"webpack --colors --watch\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": {
+    "name": "tor",
+    "email": "0777144@gmail.com"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0777144/proto.git"
+  },
+  "dependencies": {
+    "express": "^4.14.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "webpack": "^2.2.1"
+  },
+  "engines": {
+    "node": "^6.x"
+  }
+}
