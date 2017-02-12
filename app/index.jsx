@@ -3,9 +3,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Hello from '../components/hello';
+import H1 from '../components/h1';
 
 ReactDOM.render(
-    <Hello/>,
+    <H1 text="Hello CSS Modules!"/>,
     document.getElementById('app')
 );
+

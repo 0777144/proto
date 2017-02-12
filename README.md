@@ -21,8 +21,10 @@ npm run watch
 * [webpack 2.2.1]
 * JavaScript [ES6] syntax
 * [React]
+* [CSS Modules]
 
 
 [webpack 2.2.1]: https://github.com/webpack/webpack/tree/v2.2.1
 [ES6]: http://es6-features.org/
 [React]: https://github.com/facebook/react
+[CSS Modules]: https://github.com/webpack-contrib/css-loader#css-modules

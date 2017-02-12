@@ -21,7 +21,8 @@ module.exports = {
         extensions: [
             '.js',
             '.jsx',
-            '.json'
+            '.json',
+            '.css'
         ]
     },
 
@@ -37,6 +38,20 @@ module.exports = {
                     path.resolve(__dirname, 'node_modules')
                 ],
                 loader: 'babel-loader'
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            sourceMap: true,
+                            localIdentName: '[name]__[local]___[hash:base64:5]'
+                        }
+                    }
+                ]
             }
         ]
     }
