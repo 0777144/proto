@@ -19,6 +19,8 @@ npm run watch
 ## Features
 
 * [webpack 2.2.1]
+* JavaScript [ES6] syntax
 
 
 [webpack 2.2.1]: https://github.com/webpack/webpack/tree/v2.2.1
+[ES6]: http://es6-features.org/

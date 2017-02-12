@@ -1,5 +1,5 @@
 
 
-var documentWrite = require('./documentWrite');
+import documentWrite from './documentWrite';
 
-documentWrite('Hello, Webpack!');
+documentWrite('Hello, Babel!');

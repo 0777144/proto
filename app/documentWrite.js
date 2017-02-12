@@ -1,5 +1,5 @@
 
 
-module.exports = function (text) {
+export default function (text) {
     document.write(text);
 };
