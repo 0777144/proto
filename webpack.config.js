@@ -30,7 +30,20 @@ module.exports = {
                 exclude: [
                     path.resolve(__dirname, 'node_modules')
                 ],
-                loader: 'babel-loader'
+                use: [
+                    {
+                        loader: 'log-loader',
+                        options: {
+                            id: 1
+                        }
+                    },
+                    {
+                        loader: 'log-loader',
+                        options: {
+                            id: 2
+                        }
+                    }
+                ]
             }
         ]
     }
