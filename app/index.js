@@ -1,5 +1,6 @@
 
 
-var documentWrite = require('./documentWrite');
+import {foo} from './helpers';
 
-documentWrite('Hello, Webpack!');
+var elem = document.getElementById('app');
+elem.innerHTML = foo();

@@ -1,4 +1,4 @@
-var path = require('path');
+const path = require('path');
 
 module.exports = {
 
@@ -9,5 +9,24 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'public', 'dist')
+    },
+
+    resolve: {
+        modules: [
+            path.resolve('./app'),
+            'node_modules'
+        ]
+    },
+
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: [
+                    'babel-loader'
+                ],
+            },
+        ]
     }
 };
