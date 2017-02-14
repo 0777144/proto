@@ -11,7 +11,10 @@ module.exports = {
 
     output: {
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'public', 'dist')
+        path: path.resolve(__dirname, 'public', 'dist'),
+        pathinfo: true,
+        //publicPath: '/dist/',
+        chunkFilename: '[id].js'
     },
 
     resolve: {
@@ -37,7 +40,7 @@ module.exports = {
                     path.resolve(__dirname, 'components')
                 ],
                 exclude: [
-                    path.resolve(__dirname, 'node_modules')
+                    /node_modules/
                 ],
                 loader: 'babel-loader'
             },
