@@ -12,7 +12,7 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'public', 'dist'),
-        pathinfo: true,
+        //pathinfo: true, // TODO: remove for production
         //publicPath: '/dist/',
         chunkFilename: '[id].js'
     },
@@ -101,6 +101,16 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     name: '[name]___[hash:base64:5].[ext]'
+                }
+            },
+            {
+                loader: 'svgo-loader',
+                options: {
+                    plugins: [
+                        {removeTitle: true},
+                        {convertColors: {shorthex: false}},
+                        {convertPathData: false}
+                    ]
                 }
             }
         ]

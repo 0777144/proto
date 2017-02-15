@@ -3,16 +3,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import 'app.css';
-
-import Nav from '../components/nav';
-import Logo from '../components/logo';
-
+import App from './App';
 
 ReactDOM.render(
-    <Nav>
-        <Logo/>
-    </Nav>,
+    <App/>,
     document.getElementById('app')
 );
 

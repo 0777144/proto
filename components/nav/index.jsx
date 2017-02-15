@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import {nav} from  './nav.css';
+import {nav} from  './nav.scss';
 
 export default class Nav extends React.Component {
     render() {
