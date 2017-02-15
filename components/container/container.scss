@@ -1,29 +1,26 @@
 
-@import '../../styles/variables';
 
-$container-width: 840px;
-$mobile-device-width: 400px;
-$padding: 20px;
+@import '../../styles/variables';
 
 .container
 {
     width: 100%;
     max-width: $container-width;
     margin: 0 auto;
-    padding: 0 $padding;
+    padding: 0 $container-padding;
 }
 
 // плавный переход отступов
-@media (max-width: $mobile-device-width + $padding * 2)
+@media (max-width: $screen-sm-min + $container-padding * 2)
 {
     .container
     {
-        width: $mobile-device-width;
+        width: $screen-sm-min;
         padding: 0;
     }
 }
 
-@media (max-width: $mobile-device-width)
+@media (max-width: $screen-sm-min)
 {
     .container
     {
