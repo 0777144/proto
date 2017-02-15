@@ -1,13 +1,29 @@
-@import "../../styles/_variables";
+@import '../../styles/_variables';
 
-.article {
-    padding: 10px;
+.article
+{
     margin-top: 20px;
+    padding: 10px;
+
     border: 1px solid #cddbf5;
 }
 
+.header
+{
+    margin-bottom: 10px;
+}
 
-.header {
-    font-family: 'Roboto', serif;
-    font-size: 16px;
+.title
+{
+    font-family: 'Roboto Slab', serif;
+    font-size: 24px;
+}
+
+.date
+{
+    display: block;
+
+    margin-top: 5px;
+
+    color: #bbb;
 }

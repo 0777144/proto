@@ -1,0 +1,33 @@
+
+@import '../../styles/variables';
+
+$container-width: 840px;
+$mobile-device-width: 400px;
+$padding: 20px;
+
+.container
+{
+    width: 100%;
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 $padding;
+}
+
+// плавный переход отступов
+@media (max-width: $mobile-device-width + $padding * 2)
+{
+    .container
+    {
+        width: $mobile-device-width;
+        padding: 0;
+    }
+}
+
+@media (max-width: $mobile-device-width)
+{
+    .container
+    {
+        width: 100%;
+        padding: 0;
+    }
+}

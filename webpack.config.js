@@ -27,7 +27,8 @@ module.exports = {
             '.jsx',
             '.json',
             '.scss',
-            '.css'
+            '.css',
+            '.svg'
         ]
     },
 
@@ -98,20 +99,24 @@ module.exports = {
             },
             {
                 test: /\.svg/,
-                loader: 'file-loader',
-                options: {
-                    name: '[name]___[hash:base64:5].[ext]'
-                }
-            },
-            {
-                loader: 'svgo-loader',
-                options: {
-                    plugins: [
-                        {removeTitle: true},
-                        {convertColors: {shorthex: false}},
-                        {convertPathData: false}
-                    ]
-                }
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name]___[hash:base64:5].[ext]'
+                        }
+                    },
+                    {
+                        loader: 'svgo-loader',
+                        options: {
+                            plugins: [
+                                {removeTitle: true},
+                                {convertColors: {shorthex: false}},
+                                {convertPathData: false}
+                            ]
+                        }
+                    }
+                ]
             }
         ]
     },
