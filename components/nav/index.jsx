@@ -1,12 +1,15 @@
 
 
 import React from 'react';
-import {nav} from  './nav.scss';
+import Container from '../container';
+import {nav, container} from  './nav.scss';
 
 export default class Nav extends React.Component {
     render() {
         return <nav className={nav}>
-            {this.props.children}
+            <Container className={container}>
+                {this.props.children}
+            </Container>
         </nav>
     }
 }

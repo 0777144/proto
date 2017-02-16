@@ -1,6 +1,6 @@
 
 // Extra small screen / phone
-$screen-xs-min:              					320px !default;
+$screen-xs-min:              					480px !default;
 
 // Small screen / tablet
 $screen-sm-min:              					768px !default;
@@ -20,5 +20,5 @@ $screen-sm-max:              					($screen-md-min - 1) !default;  // 991px
 $screen-md-max:              					($screen-lg-min - 1) !default;  // 1199px
 
 
-$container-width: 840px;
-$container-padding: 20px;
+$container-width:                                840px;
+$container-padding:                              20px;

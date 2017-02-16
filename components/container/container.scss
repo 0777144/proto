@@ -11,16 +11,16 @@
 }
 
 // плавный переход отступов
-@media (max-width: $screen-sm-min + $container-padding * 2)
+@media (max-width: $screen-xs-min + $container-padding * 2)
 {
     .container
     {
-        width: $screen-sm-min;
+        width: $screen-xs-min;
         padding: 0;
     }
 }
 
-@media (max-width: $screen-sm-min)
+@media (max-width: $screen-xs-min)
 {
     .container
     {

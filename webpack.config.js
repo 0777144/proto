@@ -78,7 +78,7 @@ module.exports = {
                                 modules: true,
                                 sourceMap: true,
                                 camelCase: true,
-                                localIdentName: '[name]__[local]___[hash:base64:5]',
+                                localIdentName: '[name]__[local]', // [name]__[local]___[hash:base64:5]
                                 importLoaders: 1
                             }
                         },
@@ -103,7 +103,7 @@ module.exports = {
                     {
                         loader: 'file-loader',
                         options: {
-                            name: '[name]___[hash:base64:5].[ext]'
+                            name: '[name].[ext]' // [name]___[hash:base64:5].[ext]
                         }
                     },
                     {
@@ -117,7 +117,16 @@ module.exports = {
                         }
                     }
                 ]
-            }
+            },
+            {
+                test: /\.font.js$/,
+                loader: ExtractTextPlugin.extract({
+                    use: [
+                        'css-loader',
+                        'fontgen-loader?embed'
+                    ]
+                })
+            },
         ]
     },
 
