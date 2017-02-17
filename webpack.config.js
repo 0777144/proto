@@ -28,7 +28,8 @@ module.exports = {
             '.json',
             '.scss',
             '.css',
-            '.svg'
+            '.svg',
+            '.font.js'
         ]
     },
 
@@ -43,7 +44,9 @@ module.exports = {
                 exclude: [
                     /node_modules/
                 ],
-                loader: 'babel-loader'
+                use: [
+                    'babel-loader'
+                ]
             },
             {
                 test: /\.css$/,
