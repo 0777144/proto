@@ -17,7 +17,14 @@ module.exports = {
         modules: [
             path.resolve(__dirname, 'app'),
             path.resolve(__dirname, 'node_modules')
+        ],
+
+        extensions: [
+            '.js',
+            '.json',
+            '.test.js'
         ]
+
     },
 
     module: {
@@ -31,18 +38,21 @@ module.exports = {
                     path.resolve(__dirname, 'node_modules')
                 ],
                 use: [
-                    {
-                        loader: 'log-loader',
-                        options: {
-                            id: 1
-                        }
-                    },
-                    {
-                        loader: 'log-loader',
-                        options: {
-                            id: 2
-                        }
-                    }
+                    'babel-loader',
+                    'log-loader?id=.js&showNextLoader=true'
+                ]
+            },
+            {
+                test: /\.test\.js$/,
+                include: [
+                    path.resolve(__dirname, 'app')
+                ],
+                exclude: [
+                    path.resolve(__dirname, 'node_modules')
+                ],
+                use: [
+                    'log-loader?id=.test.js 2',
+                    'log-loader?id=.test.js 1'
                 ]
             }
         ]
