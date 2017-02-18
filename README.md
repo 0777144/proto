@@ -3,7 +3,7 @@
 ## Getting Started
 
 Установить зависимости и запустить сервер
-```
+```bash
 git clone https://github.com/0777144/proto && cd proto
 npm install
 npm run build
@@ -11,7 +11,7 @@ npm run server
 ```
 
 Запустить watcher изменений для разработки
-```
+```bash
 npm run watch
 ```
 

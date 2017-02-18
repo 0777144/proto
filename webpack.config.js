@@ -2,6 +2,10 @@
 
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+const buildPath = path.resolve(__dirname, 'public', 'dist');
+
 
 module.exports = {
 
@@ -106,6 +110,7 @@ module.exports = {
     devtool: 'source-map',
 
     plugins: [
-        new ExtractTextPlugin('[name].bundle.css')
+        new ExtractTextPlugin('[name].bundle.css'),
+        new CleanWebpackPlugin(buildPath)
     ]
 };
