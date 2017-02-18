@@ -29,9 +29,20 @@ npm run watch
 
 ## Questions
 
-* Когда и при каких услоавиях `babel` генерирует вспомогательные функции
-  https://babeljs.io/docs/plugins/transform-runtime/#why-
-  ```
-  Babel uses very small helpers for common functions such as _extend. By default this will be added to every file that requires it. This duplication is sometimes unnecessary, especially when your application is spread out over multiple files.
-  ```
+На сайте [офицальной документации](about.bundle.js) сказано
+
+```
+  Babel uses very small helpers for common functions such as _extend. By default this will be added
+  to every file that requires it. This duplication is sometimes unnecessary, especially when your
+  application is spread out over multiple files.
+```
+
+* Когда и при каких услоавиях `babel` генерирует эти вспомогательные функции
+  * https://babeljs.io/docs/plugins/transform-es2015-computed-properties/#example
+    `{[val]: val}` -> `function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }({}, text + '_' + text, text)`
+
+* Когда нужно подключать `babel-polyfill` (как я пониманию что мне нужен полифил?) смотрю [ECMAScript 6 compatibility table](https://kangax.github.io/compat-table/es6/) для нужной мне фичи и если она не поддерживается где мне нужно, то уже тогда думаю о подключение полифила, так получается?
+  * куда их подключать (создать в `webpack.config` `entry` `common`?) и там перечислить то что нужно `common: ['a', 'b', 'c']`
+  * как сделать так, чтобы они не аффектили, те случаи, когда в окружение уже есть нужный мне функционал
+  * можно ли как-то научить `babel` автоматически распозновать какие полифилы мне нужны
 
