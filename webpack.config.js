@@ -121,6 +121,7 @@ module.exports = {
                     }
                 ]
             },
+            // TODO: icon fonts ar icon sprites
             {
                 test: /\.font.js$/,
                 loader: ExtractTextPlugin.extract({
