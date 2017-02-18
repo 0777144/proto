@@ -2,7 +2,7 @@
 import {welcome} from './welcome';
 
 
-welcome('home').then(function () {
-    console.log('welcome: ', Array.from(arguments));
-});
+    let x = 'x';
+    let y = 'y';
+    console.log('welcome: ', welcome('home'), {[x + '_' + y]:'???'});
 
