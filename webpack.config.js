@@ -4,7 +4,11 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const buildPath = path.resolve(__dirname, 'public', 'dist');
+// dist is for distribution (production) and contains minified code
+// build contains code that is not minified and not ready for production deployment.
+// TODO: maybe use build for development
+const buildPath = path.resolve(__dirname, 'public', 'build');
+const distPath = path.resolve(__dirname, 'public', 'dist');
 
 
 module.exports = {
@@ -15,7 +19,7 @@ module.exports = {
 
     output: {
         filename: '[name].bundle.js',
-        path: buildPath,
+        path: distPath,
         //pathinfo: true, // TODO: remove for production
         //publicPath: '/dist/',
         chunkFilename: '[id].js'
@@ -142,6 +146,6 @@ module.exports = {
 
     plugins: [
         new ExtractTextPlugin('[name].bundle.css'),
-        new CleanWebpackPlugin(buildPath)
+        new CleanWebpackPlugin(distPath)
     ]
 };
