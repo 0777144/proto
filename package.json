@@ -20,6 +20,7 @@
     "url": "https://github.com/0777144/proto.git"
   },
   "dependencies": {
+    "clean-webpack-plugin": "^0.1.15",
     "express": "^4.14.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",

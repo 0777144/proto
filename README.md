@@ -39,7 +39,7 @@ npm run watch
 https://babeljs.io/docs/plugins/transform-runtime/
 * NoErrorsPlugin
 * bundle-loader - понять как работает и почему там используется метод `pitch`
-
+* webpack clean plugin
 
 
 [webpack 2.2.1]: https://github.com/webpack/webpack/tree/v2.2.1
