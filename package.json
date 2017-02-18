@@ -19,7 +19,6 @@
     "url": "https://github.com/0777144/proto.git"
   },
   "dependencies": {
-    "babel-polyfill": "^6.23.0",
     "express": "^4.14.1"
   },
   "devDependencies": {
