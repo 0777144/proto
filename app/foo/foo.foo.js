@@ -1,4 +1,4 @@
 
 export function foo() {
-    return 'foo.deps';
+    return 'foo.test';
 }

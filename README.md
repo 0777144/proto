@@ -5,6 +5,7 @@
 Установить зависимости и запустить сервер
 ```
 git clone https://github.com/0777144/proto && cd proto
+git checkout feature/log-loader
 npm install
 npm run build
 npm run server
@@ -47,8 +48,8 @@ module.exports = {
                 test: /\.test\.js$/,
                 // ...
                 use: [
-                    'log-loader?id=.test.js 2',
-                    'log-loader?id=.test.js 1'
+                    'log-loader?id=.foo.js 2', // // will be runned second
+                    'log-loader?id=.foo.js 1'  // will be runned first
                 ]
             }
         ]
@@ -59,11 +60,4 @@ module.exports = {
 Из этого примера можем убедистя что лоадеры запускаются в обратном порядке, а так же заметить, что
 если файл попадает под неколько правил, то они будут применяться снизу веерх (так же как и лоадеры)
 
-```bash
- ./app/index.js                                 [.js] -> babel-loader
- ./app/foo/foo.test.js                   [.test.js 1]
- ./app/foo/foo.test.js                   [.test.js 2]
- ./app/foo/foo.test.js                          [.js] -> babel-loader
- ./app/documentWrite.js                         [.js] -> babel-loader
- ./app/foo/index.js                             [.js] -> babel-loader
-```
+![](screenshot.png)

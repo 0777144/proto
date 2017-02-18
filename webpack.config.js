@@ -22,7 +22,7 @@ module.exports = {
         extensions: [
             '.js',
             '.json',
-            '.test.js'
+            '.foo.js'
         ]
 
     },
@@ -39,11 +39,11 @@ module.exports = {
                 ],
                 use: [
                     'babel-loader',
-                    'log-loader?id=.js&showNextLoader=true'
+                    'log-loader?id=.js&showNextLoader=true&showPitch=1'
                 ]
             },
             {
-                test: /\.test\.js$/,
+                test: /\.foo\.js$/,
                 include: [
                     path.resolve(__dirname, 'app')
                 ],
@@ -51,8 +51,8 @@ module.exports = {
                     path.resolve(__dirname, 'node_modules')
                 ],
                 use: [
-                    'log-loader?id=.test.js 2',
-                    'log-loader?id=.test.js 1'
+                    'log-loader?id=.foo.js 2',
+                    'log-loader?id=.foo.js 1'
                 ]
             }
         ]
