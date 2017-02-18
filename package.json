@@ -1,13 +1,15 @@
 {
   "name": "proto",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "",
   "main": "index.html",
   "scripts": {
     "server": "nodemon server.js",
     "build": "webpack  --progress",
+    "clean": "rm -rf public/dist && rm -rf node_modules",
     "watch": "nodemon --quiet --config false --watch *.config.js --exec \"webpack --colors --watch\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postversion": "git push --follow-tags"
   },
   "keywords": [],
   "author": {
