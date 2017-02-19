@@ -5,10 +5,16 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
+    context: path.resolve(__dirname, 'app'),
 
     entry: {
-        home: './app/home',
-        about: './app/about'
+        home: './home',
+        about: './about',
+        // simple: './simple',
+        common: [
+            'babel-runtime/core-js',
+            './common'
+        ]
     },
 
     output: {
@@ -31,18 +37,15 @@ module.exports = {
                 include: [
                     path.resolve(__dirname, 'app')
                 ],
-                exclude: [
-                    path.resolve(__dirname, 'node_modules')
-                ],
                 loader: 'babel-loader'
             }
         ]
     },
 
     plugins: [
-        //new webpack.optimize.CommonsChunkPlugin({
-        //    name: 'common'
-        //}),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common',
+        }),
         new CleanWebpackPlugin(path.resolve(__dirname, 'public', 'dist'))
     ],
 
