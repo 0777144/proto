@@ -12,7 +12,6 @@ module.exports = {
         about: './about',
         // simple: './simple',
         common: [
-            'babel-runtime/core-js',
             './common'
         ]
     },
@@ -46,7 +45,8 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
         }),
-        new CleanWebpackPlugin(path.resolve(__dirname, 'public', 'dist'))
+        new CleanWebpackPlugin(path.resolve(__dirname, 'public', 'dist')),
+        new webpack.NormalModuleReplacementPlugin(/babel-runtime\/core-js\/promise/, 'bluebird')
     ],
 
     devtool: 'source-map'
