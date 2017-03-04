@@ -5,6 +5,14 @@
     "comma-dangle": [
       "error",
       "never"
-    ]
-  }
+    ],
+    "global-require": 0,
+    "import/no-dynamic-require": 0,
+    "import/no-unresolved": 2,
+    "import/extensions": 0,
+  },
+  "env": [
+    "browser",
+    "es6"
+  ]
 }
