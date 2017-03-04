@@ -1,7 +1,8 @@
 {
   "presets": [
     "react",
-    ["es2015", {"modules": false}], // TODO: use env instead
+//    ["es2015", {"modules": false}], // TODO: use env instead
+    "es2015", // отключил modules false для react-hot-loader
     "stage-3"
   ],
   "plugins": [
