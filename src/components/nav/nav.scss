@@ -1,6 +1,6 @@
 
 
-@import "../../styles/variables";
+@import '../../styles/variables';
 
 
 .nav
@@ -15,16 +15,15 @@
     display: flex;
 
     padding: 0 30px;
-    
+
+    flex: 1 1 auto;
+    justify-content: space-between;
+    align-items: center;
+
     @media (max-width: $screen-xs-min + $container-padding * 2)
     {
         padding: 0 10px;
     }
-    
-    
-    flex: 1 1 auto;
-    justify-content: space-between;
-    align-items: center;
 }
 
 

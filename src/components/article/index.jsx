@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import { article, header, title, date } from './article.scss';
+import {article, header, title, date} from './article.scss';
 
 export default class Article extends React.Component {
   render() {

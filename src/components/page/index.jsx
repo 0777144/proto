@@ -3,7 +3,7 @@
 import React from 'react';
 import Container from '../container';
 
-import { page, title } from './page.scss';
+import {page, title} from './page.scss';
 
 
 export default class Page extends React.Component {

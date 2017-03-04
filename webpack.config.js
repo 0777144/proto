@@ -13,6 +13,7 @@ const distPath = path.resolve(__dirname, 'public', 'dist');
 
 
 module.exports = {
+  context: path.resolve(__dirname, 'src'),
 
   entry: {
     app: [
@@ -32,7 +33,7 @@ module.exports = {
 
   resolve: {
     modules: [
-      path.resolve(__dirname, 'app'),
+      path.resolve(__dirname, 'src', 'app'),
       path.resolve(__dirname, 'node_modules')
     ],
     extensions: [
@@ -51,8 +52,8 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: [
-          path.resolve(__dirname, 'app'),
-          path.resolve(__dirname, 'components')
+          path.resolve(__dirname, 'src', 'app'),
+          path.resolve(__dirname, 'src', 'components')
         ],
         exclude: [
           /node_modules/
@@ -127,9 +128,9 @@ module.exports = {
             loader: 'svgo-loader',
             options: {
               plugins: [
-                { removeTitle: true },
-                { convertColors: { shorthex: false } },
-                { convertPathData: false }
+                {removeTitle: true},
+                {convertColors: {shorthex: false}},
+                {convertPathData: false}
               ]
             }
           }
