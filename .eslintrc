@@ -8,11 +8,13 @@
     ],
     "global-require": 0,
     "import/no-dynamic-require": 0,
-    "import/no-unresolved": 2,
+    "import/no-unresolved": [0, {"ignore": ["scss"]}],
     "import/extensions": 0,
+    "object-curly-spacing": ["error", "never"],
+    "jsx-quotes": ["error", "prefer-single"]
   },
-  "env": [
-    "browser",
-    "es6"
-  ]
+  "env": {
+    "browser": true,
+    "es6": true
+  }
 }
