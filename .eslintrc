@@ -11,7 +11,9 @@
     "import/no-unresolved": [0, {"ignore": ["scss"]}],
     "import/extensions": 0,
     "object-curly-spacing": ["error", "never"],
-    "jsx-quotes": ["error", "prefer-single"]
+    "jsx-quotes": ["error", "prefer-single"],
+    "react/prefer-stateless-function": 0,
+    "import/no-extraneous-dependencies": 0 // FIXME
   },
   "env": {
     "browser": true,

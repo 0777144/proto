@@ -13,13 +13,14 @@ const distPath = path.resolve(__dirname, 'public', 'dist');
 
 
 module.exports = {
-  context: path.resolve(__dirname, 'src'),
+  // context: path.resolve(__dirname, 'src'),
 
   entry: {
     app: [
       'webpack-hot-middleware/client',
       'babel-polyfill',
-      './app/index.jsx'
+      'react-hot-loader/patch',
+      './src/index.jsx'
     ]
   },
 
@@ -33,7 +34,7 @@ module.exports = {
 
   resolve: {
     modules: [
-      path.resolve(__dirname, 'src', 'app'),
+      path.resolve(__dirname, 'src'),
       path.resolve(__dirname, 'node_modules')
     ],
     extensions: [
@@ -52,14 +53,12 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: [
-          path.resolve(__dirname, 'src', 'app'),
-          path.resolve(__dirname, 'src', 'components')
+          path.resolve(__dirname, 'src')
         ],
         exclude: [
           /node_modules/
         ],
         use: [
-          'react-hot-loader',
           'babel-loader'
         ]
       },
@@ -149,7 +148,7 @@ module.exports = {
     ]
   },
 
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-inline-source-map',
 
   plugins: [
     new ExtractTextPlugin('[name].bundle.css'),
