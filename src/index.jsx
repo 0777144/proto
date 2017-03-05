@@ -5,10 +5,18 @@ import ReactDOM from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
 import App from './containers/app';
 
+import {Provider} from 'react-redux';
+import configureStore from './store/configureStore';
+
+
+const store = configureStore();
+
 const render = (Component) => {
   ReactDOM.render(
     <AppContainer>
-      <Component />
+      <Provider store={store}>
+        <Component />
+      </Provider>
     </AppContainer>,
     document.getElementById('root')
   );

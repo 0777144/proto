@@ -1,12 +1,12 @@
 
 
-import React from 'react';
+import React, {PropTypes, Component} from 'react';
 import Container from '../container';
 
 import {page, title} from './page.scss';
 
 
-export default class Page extends React.Component {
+export default class Page extends Component {
   render() {
     return (<main className={page}>
       <Container>
@@ -16,3 +16,8 @@ export default class Page extends React.Component {
     </main>);
   }
 }
+
+Page.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.array.isRequired
+};
