@@ -5,15 +5,17 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const PATH_BASE = path.resolve(__dirname, '../');
+
 // dist is for distribution (production) and contains minified code
 // build contains code that is not minified and not ready for production deployment.
 // TODO: maybe use build for development
-// const buildPath = path.resolve(__dirname, 'public', 'build');
-const distPath = path.resolve(__dirname, 'public', 'dist');
+// const buildPath = path.join(PATH_BASE, 'public', 'build');
+const distPath = path.join(PATH_BASE, 'public', 'dist');
 
 
 module.exports = {
-  // context: path.resolve(__dirname, 'src'),
+  // context: path.join(PATH_BASE, 'src'),
 
   entry: {
     app: [
@@ -34,8 +36,8 @@ module.exports = {
 
   resolve: {
     modules: [
-      path.resolve(__dirname, 'src'),
-      path.resolve(__dirname, 'node_modules')
+      path.join(PATH_BASE, 'src'),
+      path.join(PATH_BASE, 'node_modules')
     ],
     extensions: [
       '.js',
@@ -53,7 +55,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: [
-          path.resolve(__dirname, 'src')
+          path.join(PATH_BASE, 'src')
         ],
         exclude: [
           /node_modules/
