@@ -1,16 +1,22 @@
 
 
-import React from 'react';
-import {article, header, title, date} from './article.scss';
+import React from 'react'
+import s from './article.scss'
 
-export default class Article extends React.Component {
-  render() {
-    return (<article className={article}>
-      <header className={header}>
-        <h2 className={title}>{this.props.title}</h2>
-        <aside className={date}>{this.props.date}</aside>
-      </header>
-      <section>{this.props.children}</section>
-    </article>);
-  }
-}
+import Link from '../link'
+
+function createMarkup(html) {return {__html: html}}
+
+const Article = ({title, content, url, date, onClick}) => (
+  <article className={s.article}>
+    <header className={s.header}>
+      <h2 className={s.title}>
+        <Link to={`/article/${title}`} onClick={onClick}>{title}</Link>
+      </h2>
+      <aside className={s.date}>{date}</aside>
+    </header>
+    <section dangerouslySetInnerHTML={createMarkup(content)} />
+  </article>
+);
+
+export default Article

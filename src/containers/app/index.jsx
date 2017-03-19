@@ -1,32 +1,80 @@
 
 
 import React from 'react';
+import Request from 'superagent';
 
 import './app.scss';
 import '../../styles/icon';
 
+import History from '../../history';
 
 import Nav from '../../components/nav';
 import Logo from '../../components/logo';
+import Link from '../../components/link';
 import Page from '../../components/page';
 import Article from '../../components/article';
+import ArticleList from '../../components/article-list';
 
 import {icon as navIcon} from '../../components/nav/nav.scss';
 
-
 export default class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      page: (
+        <Page title='Notes'>
+          <ArticleList/>
+        </Page>
+      )
+    }
+  }
+
+  componentDidMount() {
+    // Инициализируем историю
+    History.replace('/', {article: {date:'',title:'',content:''}});
+
+    History.listen(location => {
+      console.info('location changed:', location)
+
+      if (/article/.test(location.pathname)) {
+        const articleTitle = location.pathname.split('/').pop()
+
+        Request.get(`/api/article/${articleTitle}`)
+          .then(data => data.body)
+          .then(a => {
+            this.setState({
+              page: (
+                <Page title={a.title}>
+                  <Article
+                    date={a.date}
+                    content={a.content}
+                  />
+                </Page>
+              )
+            })
+          });
+
+      } else {
+        this.setState({
+          page: (
+            <Page title='Notes'>
+              <ArticleList/>
+            </Page>
+          )
+        })
+      }
+    })
+  }
+
   render() {
     return (
       <div>
         <Nav>
-          <Logo />
-          <a className={navIcon} href='https://github.com/0777144/proto' target='_blank' rel='noopener noreferrer'><i className='icon-github' /></a>
+          <Logo to="/"/>
+          <Link className={navIcon} to='https://github.com/0777144/proto' target='_blank' rel='noopener noreferrer'><i className='icon-github' /></Link>
         </Nav>
 
-        <Page title='Notes'>
-          <Article title={'Статья на русском'} date='12.03.95 7:40'>{'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'}</Article>
-          <Article title='English article' date='12.03.95 7:40'>{'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'}</Article>
-        </Page>
+        {this.state.page}
       </div>
     );
   }

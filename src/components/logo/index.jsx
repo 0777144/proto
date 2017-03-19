@@ -1,10 +1,11 @@
 
 
 import React from 'react';
+import Link from '../link';
 import {protoLogo} from './logo.scss';
 
-export default class Logo extends React.Component {
-  render() {
-    return <div className={protoLogo} />;
-  }
-}
+const Logo = (props) => (
+  <Link className={protoLogo} to={props.to}/>
+);
+
+export default Logo
