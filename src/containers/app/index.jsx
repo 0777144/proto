@@ -1,28 +1,28 @@
 
 
-import React from 'react';
-import Request from 'superagent';
+import React from 'react'
+import Request from 'superagent'
 
-import './app.scss';
-import '../../styles/icon';
+import './app.scss'
+import '../../styles/icon'
 
-import History from '../../history';
+import History from '../../history'
 
-import Nav from '../../components/nav';
-import Logo from '../../components/logo';
-import Link from '../../components/link';
-import Page from '../../components/page';
-import Article from '../../components/article';
-import ArticleList from '../../components/article-list';
+import Nav from '../../components/nav'
+import Logo from '../../components/logo'
+import Link from '../../components/link'
+import Page from '../../components/page'
+import Article from '../../components/article'
+import ArticleList from '../../components/article-list'
 
-import {icon as navIcon} from '../../components/nav/nav.scss';
+import {icon as navIcon} from '../../components/nav/nav.scss'
 
 export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       page: (
-        <Page title='Notes'>
+        <Page title='Articles'>
           <ArticleList/>
         </Page>
       )
@@ -31,7 +31,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     // Инициализируем историю
-    History.replace('/', {article: {date:'',title:'',content:''}});
+    History.replace('/', {article: {date:'',title:'',content:''}})
 
     History.listen(location => {
       console.info('location changed:', location)
@@ -52,12 +52,11 @@ export default class App extends React.Component {
                 </Page>
               )
             })
-          });
-
+          })
       } else {
         this.setState({
           page: (
-            <Page title='Notes'>
+            <Page title='Articles'>
               <ArticleList/>
             </Page>
           )
