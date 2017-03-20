@@ -32,7 +32,7 @@ const contentPath = path.resolve('content');
 
 const prepareContentFiles = (fileStat) => ({
   title: path.relative(contentPath, fileStat.path),
-  content: md.render(fs.readFileSync(fileStat.path).toString()).split('.').slice(0, 10).join('.'),
+  content: md.render(fs.readFileSync(fileStat.path).toString().split('\n').slice(0, 12).join('\n')),
   date: moment(fileStat.ctime).calendar()
 });
 

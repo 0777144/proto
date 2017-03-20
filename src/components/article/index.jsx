@@ -2,21 +2,21 @@
 
 import React from 'react'
 import s from './article.scss'
-import {markdown} from '../../styles/markdown.scss'
+import {markdown} from '../../styles/markdown.less'
 
 import Link from '../link'
 
 function createMarkup(html) {return {__html: html}}
 
 const Article = ({title, content, url, date, onClick}) => (
-  <article className={`${s.article} ${markdown}`}>
+  <article className={s.article}>
     <header className={s.header}>
       <h2 className={s.title}>
         <Link to={`/article/${title}`} onClick={onClick}>{title}</Link>
       </h2>
       <aside className={s.date}>{date}</aside>
     </header>
-    <section dangerouslySetInnerHTML={createMarkup(content)} />
+    <section className={markdown} dangerouslySetInnerHTML={createMarkup(content)} />
   </article>
 );
 
