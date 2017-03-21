@@ -9,13 +9,14 @@ import '../../styles/icon'
 import History from '../../history'
 
 import Nav from '../../components/nav'
+import Footer from '../../components/footer'
 import Logo from '../../components/logo'
 import Link from '../../components/link'
 import Page from '../../components/page'
 import Article from '../../components/article'
 import ArticleList from '../../components/article-list'
 
-import {icon as navIcon} from '../../components/nav/nav.scss'
+import {icon as navIcon} from '../../components/footer/footer.scss'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -70,10 +71,13 @@ export default class App extends React.Component {
       <div>
         <Nav>
           <Logo to="/"/>
-          <Link className={navIcon} to='https://github.com/0777144/proto' target='_blank' rel='noopener noreferrer'><i className='icon-github' /></Link>
         </Nav>
 
         {this.state.page}
+
+        <Footer>
+          <Link className={navIcon} to='https://github.com/0777144/proto' target='_blank' rel='noopener noreferrer'><i className='icon-github' /></Link>
+        </Footer>
       </div>
     );
   }

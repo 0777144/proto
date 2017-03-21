@@ -1,13 +1,15 @@
 
 
 @import '../../styles/variables';
+@import '../../styles/colors';
 
+// TODO: копипаста из nav, ВЫНЕСТИ!!!
 
-.nav
+.footer
 {
     padding: 20px 0;
 
-    background-color: #312f2f;
+    border-top: 1px solid $lightblue
 }
 
 .container
@@ -34,10 +36,10 @@
     transition: ease-out color .3s ;
     text-decoration: none;
 
-    color: rgba(255, 255, 255, .8);
+    color: rgba(0, 0, 0, .8);
 }
 
 .icon:hover
 {
-    color: rgba(255, 255, 255, .9);
+    color: rgba(0, 0, 0, .9);
 }
