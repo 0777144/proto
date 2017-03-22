@@ -1,14 +1,18 @@
 
 
-const path = require('path');
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+// TODO: сделать норм прод конфиг
 
+const path = require('path')
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+
+
+const cssLoader = require('./css-loader.config')
 // dist is for distribution (production) and contains minified code
 // build contains code that is not minified and not ready for production deployment.
 // TODO: maybe use build for development
-const rootPath = path.resolve(__dirname)
+const rootPath = path.resolve(process.cwd())
 const buildPath = path.join(rootPath, 'public', 'build')
 const distPath = path.join(rootPath, 'public', 'dist')
 
@@ -35,8 +39,8 @@ module.exports = {
 
   resolve: {
     modules: [
-      path.resolve(__dirname, 'src'),
-      path.resolve(__dirname, 'node_modules')
+      path.join(rootPath, 'src'),
+      path.join(rootPath, 'node_modules')
     ],
     extensions: [
       '.js',
@@ -67,16 +71,7 @@ module.exports = {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           use: [
-            {
-              loader: 'css-loader',
-              options: {
-                modules: true,
-                sourceMap: true,
-                camelCase: true,
-                localIdentName: '[name]__[local]___[hash:base64:5]',
-                importLoaders: 1
-              }
-            },
+            cssLoader,
             {
               loader: 'postcss-loader',
               options: {
@@ -90,16 +85,7 @@ module.exports = {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           use: [
-            {
-              loader: 'css-loader',
-              options: {
-                modules: true,
-                sourceMap: true,
-                camelCase: true,
-                localIdentName: '[name]__[local]', // [name]__[local]___[hash:base64:5]
-                importLoaders: 1
-              }
-            },
+            cssLoader,
             {
               loader: 'postcss-loader',
               options: {
@@ -119,16 +105,7 @@ module.exports = {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
           use: [
-            {
-              loader: 'css-loader',
-              options: {
-                modules: true,
-                sourceMap: true,
-                camelCase: true,
-                localIdentName: '[name]__[local]', // [name]__[local]___[hash:base64:5]
-                importLoaders: 1
-              }
-            },
+            cssLoader,
             {
               loader: 'postcss-loader',
               options: {

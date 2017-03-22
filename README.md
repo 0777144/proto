@@ -5,9 +5,15 @@
 Установить зависимости и запустить сервер
 ```bash
 git clone https://github.com/0777144/proto && cd proto
+cp example.env .env
 npm install
-npm run build
 npm run server
+```
+
+or
+
+```
+yarn && yarn server
 ```
 
 Запустить watcher изменений для разработки

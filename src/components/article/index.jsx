@@ -2,7 +2,7 @@
 
 import React from 'react'
 import s from './article.scss'
-import {markdown} from '../../styles/markdown.less'
+import {markdown} from '../../styles/markdown.scss'
 
 import Link from '../link'
 

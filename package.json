@@ -5,8 +5,10 @@
   "main": "index.html",
   "scripts": {
     "server": "nodemon server.js",
-    "build": "webpack  --progress",
-    "watch": "nodemon --quiet --config false --watch *.config.js --exec \"webpack --colors --watch\"",
+    "webpack": "webpack --config webpack/config.js",
+    "build": "npm run webpack --  --progress",
+    "watch": "nodemon --quiet --config false --watch *.config.js --exec \"npm run webpack -- --colors --watch\"",
+    "clear": "rm -rf node_modules && rm -rf public/dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -22,8 +24,8 @@
   "dependencies": {
     "babel-polyfill": "^6.23.0",
     "clean-webpack-plugin": "^0.1.15",
+    "dotenv": "^4.0.0",
     "express": "^4.14.1",
-    "gitbook-markdown-css": "^1.1.0",
     "history": "^4.6.1",
     "markdown-it": "^8.3.1",
     "moment": "^2.17.1",
