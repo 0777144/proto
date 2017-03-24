@@ -70,6 +70,10 @@ app.get('/api/article/:article_title', (req, res) => {
   })
 })
 
+app.all(/^\/articles\/.*/, function (req, res) {
+  res.sendFile(path.resolve('./public/index.html'));
+})
+
 
 app.listen(process.env.NODE_PORT, () => {
   console.log(`Server started: http://localhost:${process.env.NODE_PORT}`) // eslint-disable-line no-console

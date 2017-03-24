@@ -1,84 +1,58 @@
 
 
 import React from 'react'
-import Request from 'superagent'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 
 import './app.scss'
 import '../../styles/icon'
 
-import History from '../../history'
-
 import Nav from '../../components/nav'
 import Footer from '../../components/footer'
 import Logo from '../../components/logo'
-import Link from '../../components/link'
 import Page from '../../components/page'
-import Article from '../../components/article'
-import ArticleList from '../../components/article-list'
+import ArticleContainer from '../../containers/article'
+import ArticleListContainer from '../../containers/article-list'
 
 import {icon as navIcon} from '../../components/footer/footer.scss'
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      page: (
-        <Page title='Articles'>
-          <ArticleList/>
-        </Page>
-      )
-    }
-  }
+const PageArticle = ({match}) => (
+  <Page title={match.params.title}>
+    <ArticleContainer title={match.params.title} />
+  </Page>
+)
 
-  componentDidMount() {
-    // Инициализируем историю
-    History.replace('/', {article: {date:'',title:'',content:''}})
+const PageArticleNew = ({match}) => (
+  <Page title="New article">
+    NEW!
+  </Page>
+)
 
-    History.listen(location => {
-      console.info('location changed:', location)
+const PageArticleList = () => (
+  <Page title="Articles">
+    <ArticleListContainer/>
+  </Page>
+)
 
-      if (/article/.test(location.pathname)) {
-        const articleTitle = location.pathname.split('/').pop()
 
-        Request.get(`/api/article/${articleTitle}`)
-          .then(data => data.body)
-          .then(a => {
-            this.setState({
-              page: (
-                <Page title={a.title}>
-                  <Article
-                    date={a.date}
-                    content={a.content}
-                  />
-                </Page>
-              )
-            })
-          })
-      } else {
-        this.setState({
-          page: (
-            <Page title='Articles'>
-              <ArticleList/>
-            </Page>
-          )
-        })
-      }
-    })
-  }
+const App = (props) => (
+  <Router>
+    <div>
+      <Nav>
+        <Link to="/"><Logo/></Link>
+      </Nav>
 
-  render() {
-    return (
-      <div>
-        <Nav>
-          <Logo to="/"/>
-        </Nav>
+      <Route exact path="/" component={PageArticleList}/>
+      <Route path="/articles/:title" component={PageArticle}/>
 
-        {this.state.page}
+      <Footer>
+        <Link className={navIcon} to='https://github.com/0777144/proto' target='_blank' rel='noopener noreferrer'><i className='icon-github' /></Link>
+      </Footer>
+    </div>
+  </Router>
+)
 
-        <Footer>
-          <Link className={navIcon} to='https://github.com/0777144/proto' target='_blank' rel='noopener noreferrer'><i className='icon-github' /></Link>
-        </Footer>
-      </div>
-    );
-  }
-}
+export default App
