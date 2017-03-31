@@ -1,18 +1,16 @@
 
 
-import React from 'react';
+import React from 'react'
 import Container from '../container';
-
 import {page, title} from './page.scss';
 
+const Page = (props) => (
+  <main className={page}>
+    <Container>
+      <h1 className={title}>{props.title}</h1>
+      {props.children}
+    </Container>
+  </main>
+)
 
-export default class Page extends React.Component {
-  render() {
-    return (<main className={page}>
-      <Container>
-        <h1 className={title}>{this.props.title}</h1>
-        {this.props.children}
-      </Container>
-    </main>);
-  }
-}
+export default Page
