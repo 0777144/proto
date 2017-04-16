@@ -3,20 +3,16 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-
 
 const cssLoader = require('./css-loader.config')
-// dist is for distribution (production) and contains minified code
-// build contains code that is not minified and not ready for production deployment.
-// TODO: maybe use build for development
-const rootPath = path.resolve(process.cwd())
-const buildPath = path.join(rootPath, 'public', 'build')
-const distPath = path.join(rootPath, 'public', 'dist')
 
+const rootPath = path.resolve(process.cwd())
+const distPath = path.join(rootPath, 'public', 'dist')
+const clientPath = path.join(rootPath, 'src', 'client')
+const publicPath = `http://localhost:${process.env.NODE_PORT}/dist/`
 
 module.exports = {
-   context: path.join(rootPath, 'src'),
+  context: clientPath,
 
   entry: {
     app: [
@@ -30,15 +26,14 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     path: distPath,
-    pathinfo: true, // TODO: remove for production
-    // TODO: fix public path
-    publicPath: 'http://localhost:3000/dist/',
+    pathinfo: true,
+    publicPath,
     chunkFilename: '[id].js'
   },
 
   resolve: {
     modules: [
-      path.join(rootPath, 'src'),
+      clientPath,
       path.join(rootPath, 'node_modules')
     ],
     extensions: [
@@ -57,7 +52,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: [
-          path.join(rootPath, 'src')
+          clientPath
         ],
         exclude: [
           /node_modules/
@@ -104,7 +99,7 @@ module.exports = {
           }
         ]
       },
-      // TODO: icon fonts ar icon sprites
+      // TODO: icon fonts vs icon sprites
       {
         test: /\.font.js$/,
         loader: ExtractTextPlugin.extract({
@@ -123,7 +118,6 @@ module.exports = {
     new ExtractTextPlugin('[name].bundle.css'),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new CleanWebpackPlugin(distPath),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
     })

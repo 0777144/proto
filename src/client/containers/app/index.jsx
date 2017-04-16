@@ -5,7 +5,7 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import {Route} from 'react-router'
 import {ConnectedRouter as Router, routerReducer, routerMiddleware} from 'react-router-redux'
-import createHistory from 'history/createBrowserHistory'
+import createHistory from '../../../../node_modules/history/createBrowserHistory'
 
 //import reducers from 'reducers'
 
