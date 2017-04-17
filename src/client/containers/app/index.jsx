@@ -5,7 +5,7 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import {Route} from 'react-router'
 import {ConnectedRouter as Router, routerReducer, routerMiddleware} from 'react-router-redux'
-import createHistory from '../../../../node_modules/history/createBrowserHistory'
+import createHistory from 'history/createBrowserHistory'
 
 //import reducers from 'reducers'
 
@@ -13,8 +13,8 @@ import './app.scss'
 import 'styles/icon'
 
 import Layout from 'components/layout'
-import PageArticleList from 'pages/PageArticleList'
-import PageArticle from 'pages/PageArticle'
+import PagePosts from 'pages/PagePosts'
+import PagePost from 'pages/PagePost'
 
 const history = createHistory()
 
@@ -33,8 +33,8 @@ const App = (props) => (
   <Provider store={store}>
     <Router history={history}>
       <Layout>
-        <Route exact path="/" component={PageArticleList}/>
-        <Route path="/articles/:title" component={PageArticle}/>
+        <Route exact path="/" component={PagePosts}/>
+        <Route path="/posts/:slug" component={PagePost}/>
       </Layout>
     </Router>
   </Provider>

@@ -2,20 +2,18 @@
 
 import fs from 'fs'
 import path from 'path'
-import stats from 'recursive-stats'
-import moment from 'moment'
+
 import express from 'express'
+import compression from 'compression'
+import bodyParser from 'body-parser'
+import mongoose from 'mongoose'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
-import config from '../../webpack/config'
-import markdownIt from 'markdown-it'
 
-const md = markdownIt({
-  html: true,
-  linkify: true,
-  typographer: true
-})
+import config from '../../webpack/config'
+import router from './router'
+import seed from './seeds'
 
 const app = express()
 
@@ -26,54 +24,30 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: config.output.publicPath}))
   app.use(webpackHotMiddleware(compiler))
 }
+
+// Set native promises as mongoose promise
+mongoose.Promise = global.Promise
+
+// MongoDB Connection
+mongoose.connect(process.env.MONGO_URL, (error) => {
+  if (error) {
+    console.error('Please make sure Mongodb is installed and running!') // eslint-disable-line no-console
+    throw error
+  }
+
+  // feed some dummy data in DB.
+   seed()
+})
+
+// Apply body Parser and server public assets and routes
+app.use(compression())
+
 app.use(express.static(path.join(process.cwd(), 'public')))
 
-const contentPath = path.resolve('content')
+app.use(bodyParser.json({limit: '20mb'}))
+app.use(bodyParser.urlencoded({limit: '20mb', extended: false}))
 
-const prepareContentFiles = (fileStat) => ({
-  title: path.relative(contentPath, fileStat.path),
-  content: md.render(fs.readFileSync(fileStat.path).toString().split('\n').slice(0, 12).join('\n')),
-  date: moment(fileStat.ctime).calendar()
-})
-
-app.get('/api/articles', (req, res) => {
-  stats(contentPath, (err, files) => {
-    if (err) {
-      console.log(err)
-      return err
-    }
-
-    res.json({ articles: files.map(prepareContentFiles) })
-  })
-})
-
-
-app.get('/api/article/:article_title', (req, res) => {
-  fs.readFile(path.join(contentPath, req.params.article_title), (err, content) => {
-    if (err) {
-      console.log(err)
-      return err
-    }
-
-    fs.stat(path.join(contentPath, req.params.article_title), (_err, fileStat) => {
-      if (_err) {
-        console.log(_err)
-        return err
-      }
-
-      res.json({
-        title: req.params.article_title,
-        content: md.render(content.toString()),
-        date: moment(fileStat.ctime).calendar()
-      })
-    })
-  })
-})
-
-app.all(/^\/articles\/.*/, function (req, res) {
-  res.sendFile(path.resolve('./public/index.html'))
-})
-
+app.use('/api', router)
 
 app.listen(process.env.NODE_PORT, () => {
   console.log(`Server started: http://localhost:${process.env.NODE_PORT}`) // eslint-disable-line no-console

@@ -18,7 +18,7 @@ https://babeljs.io/docs/plugins/transform-runtime/
 * router
 * docs
 * Подумать над структурой директорий ([mern])
-* 
+* Настроить еslint 
 
 
 [webpack 2.2.1]: https://github.com/webpack/webpack/tree/v2.2.1
