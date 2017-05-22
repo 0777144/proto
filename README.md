@@ -7,14 +7,25 @@
 хотя даже в таком случае MongoDB будет хранить логи размером 200МБ
 в папке ./storage/database/journal
 
+### Start a MongoDB Server
 ```bash
 mongod --dbpath storage/database --smallfiles
 ```
 
-Установить зависимости и запустить сервер
+### Install dependencies
+
 ```bash
 git clone https://github.com/0777144/proto && cd proto
-cp example.env .env
+```
+
+### Environment Configuration
+```
+cp .env.example .env
+```
+
+### Start a Node.js server
+
+```
 npm install
 npm run server
 ```
@@ -24,12 +35,6 @@ or
 ```
 yarn && yarn server
 ```
-
-Запустить watcher изменений для разработки
-```bash
-npm run watch
-```
-
 
 ## Features
 

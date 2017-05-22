@@ -2,6 +2,7 @@
   "verbose": true,
   "delay": "500",
   "ignore": [
+    "storage",
     "webpack",
     "dist"
   ]

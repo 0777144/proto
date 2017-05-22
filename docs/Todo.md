@@ -1,9 +1,9 @@
 # Todo
 
-* ~~[tree-shaking](http://www.2ality.com/2015/12/webpack-tree-shaking.html)~~ Just use `import` and `export`, and when build use `webpack --optimize-minimize` option
+* ~~[tree-shaking](http://www.2ality.com/2015/12/webpack-tree-shaking.html)~~ 
+  Just use `import` and `export`, and when build use `webpack --optimize-minimize` option
 * server rendering (isomorphic) https://github.com/RickWong/react-isomorphic-starterkit
-* redux? https://github.com/erikras/react-redux-universal-hot-example
-* [postcss-scss](https://github.com/postcss/postcss-scss)
+* redux https://github.com/erikras/react-redux-universal-hot-example
 * [fontgen](https://github.com/DragonsInn/fontgen-loader/) Разобраться с лоадером иконочных шрифтов
   * https://shellmonger.com/2016/01/22/working-with-fonts-with-webpack/
   * https://github.com/sunflowerdeath/webfonts-generator
