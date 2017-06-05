@@ -13,7 +13,7 @@ const PostListItem = ({title, slug, entrance, createdAt, onClick}) => (
   <article className={s.post}>
     <header className={s.header}>
       <h2 className={s.title}>
-        <Link to={`/posts/${slug}`} className={s.link} onClick={onClick}>{title}</Link>
+        <Link to={`/posts/${slug}`} className={s.link}>{title}</Link>
       </h2>
       <aside className={s.date}>{createdAt}</aside>
     </header>
@@ -38,7 +38,7 @@ class PostListContainer extends React.Component {
     this.state = {posts: []};
   }
 
-  componentDidMount() {
+  componentWillMount() {
     Request.get('/api/posts')
       .then(data => data.body.posts)
       .then(posts => this.setState({posts}));

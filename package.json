@@ -20,7 +20,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/0777144/proto.git"
+    "url": "https://github.com/extg/proto.git"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
@@ -43,6 +43,7 @@
     "react-router-redux": "5.0.0-alpha.4",
     "recursive-stats": "^0.0.3",
     "redux": "^3.6.0",
+    "redux-logger": "^3.0.6",
     "sanitize-html": "^1.14.1",
     "superagent": "^3.5.0",
     "webfonts-generator": "^0.4.0"

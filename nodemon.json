@@ -3,6 +3,8 @@
   "delay": "500",
   "ignore": [
     "storage",
+    "public",
+    "src/client",
     "webpack",
     "dist"
   ]
