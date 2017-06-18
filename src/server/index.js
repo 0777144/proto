@@ -47,6 +47,10 @@ app.use(bodyParser.urlencoded({limit: '20mb', extended: false}))
 
 app.use('/api', router)
 
+app.use((req, res, next) => {
+  res.sendFile(path.join(process.cwd(), 'public', 'index.html'))
+})
+
 app.listen(process.env.NODE_PORT, () => {
   console.log(`Server started: http://localhost:${process.env.NODE_PORT}`) // eslint-disable-line no-console
 })
