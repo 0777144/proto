@@ -1,27 +1,27 @@
 
 
 import React from 'react'
-import Request from 'superagent'
+import {connect} from 'react-redux'
 
+import {fetchPost} from '../../actions'
 import Post from '../../components/post'
 
 class PostContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = this.props
-  }
-
   componentWillMount() {
-    Request.get(`/api/posts/${this.state.slug}`)
-      .then(data => data.body.post)
-      .then(post => this.setState(post))
+    this.props.dispatch(fetchPost(this.props.slug))
   }
 
   render() {
     return (
-      <Post {...this.state}/>
+      <Post {...this.props.post}/>
     );
   }
 }
 
-export default PostContainer
+function mapStateToProps(state) {
+  return {
+    post: state.post.data,
+  };
+}
+
+export default connect(mapStateToProps)(PostContainer)

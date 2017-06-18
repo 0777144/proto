@@ -1,54 +1,28 @@
 
 
 import React from 'react'
+import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import Request from 'superagent'
 
-import s from './../../containers/post-list/post-list-item.scss'
-import {markdown} from '../../styles/markdown.scss'
-
-function createMarkup(html) {return {__html: html}}
-
-const PostListItem = ({title, slug, entrance, createdAt, onClick}) => (
-  <article className={s.post}>
-    <header className={s.header}>
-      <h2 className={s.title}>
-        <Link to={`/posts/${slug}`} className={s.link}>{title}</Link>
-      </h2>
-      <aside className={s.date}>{createdAt}</aside>
-    </header>
-    <section className={markdown} dangerouslySetInnerHTML={createMarkup(entrance)} />
-  </article>
-)
-
-const PostList = (props) => (
-  <div>
-    {props.posts.map((post) =>
-      <PostListItem
-        {...post}
-        key={post.title}
-      />
-    )}
-  </div>
-)
+import PostList from '../../components/post-list'
+import {fetchPosts} from '../../actions'
 
 class PostListContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {posts: []};
-  }
-
   componentWillMount() {
-    Request.get('/api/posts')
-      .then(data => data.body.posts)
-      .then(posts => this.setState({posts}));
+    this.props.dispatch(fetchPosts())
   }
 
   render() {
     return (
-      <PostList {...this.state}/>
-    );
+      <PostList {...this.props}/>
+    )
   }
 }
 
-export {PostListContainer as default, PostList, PostListItem}
+function mapStateToProps(state) {
+  return {
+    posts: state.posts.items,
+  }
+}
+
+export default connect(mapStateToProps)(PostListContainer)
