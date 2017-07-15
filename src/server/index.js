@@ -20,12 +20,16 @@ if (process.env.NODE_ENV !== 'production') {
   const compiler = webpack(webpackConfig)
 
   app.use(webpackDevMiddleware(compiler, {
-    // noInfo: true,
     publicPath: webpackConfig.output.publicPath,
+    stats: {
+      colors: true,
+      hash: false,
+      version: false,
+      timings: false,
+      modules: false,
+    },
   }))
-  app.use(webpackHotMiddleware(compiler, {
-    log: console.log, path: '/__webpack_hmr', heartbeat: 10 * 1000
-  }))
+  app.use(webpackHotMiddleware(compiler))
 }
 
 // Set native promises as mongoose promise
