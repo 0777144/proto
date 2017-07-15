@@ -26,6 +26,9 @@ if (process.env.NODE_ENV !== 'production') {
 // Set native promises as mongoose promise
 mongoose.Promise = global.Promise
 
+// TODO: DeprecationWarning: `open()` is deprecated in mongoose >= 4.11.0, use `openUri()` instead,
+// or set the `useMongoClient` option if using `connect()` or `createConnection()`.
+// See http://mongoosejs.com/docs/connections.html#use-mongo-client
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URL, (error) => {
   if (error) {
