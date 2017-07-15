@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Request from 'superagent'
-import s from './../../containers/post-list/post-list-item.scss'
+import s from '../post-list/post-list-item.scss'
 import {markdown} from '../../styles/markdown.scss'
 import {Link} from 'react-router-dom'
 
