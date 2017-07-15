@@ -11,11 +11,11 @@ import history from '../history'
 
 import rootReducer from '../reducers'
 
-const configureStore = preloadedState => {
+const configureStore = initialState => {
   const loggerMiddleware = createLogger()
   const store = createStore(
     rootReducer,
-    preloadedState,
+    initialState,
     applyMiddleware(
       routerMiddleware(history),
       thunkMiddleware,
@@ -26,8 +26,7 @@ const configureStore = preloadedState => {
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
     module.hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers').default
-      
+      const nextRootReducer = require('../reducers/index').default
       store.replaceReducer(nextRootReducer)
     })
   }

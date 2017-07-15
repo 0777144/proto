@@ -3,11 +3,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
+
 import App from 'containers/app';
+
+import history from './history'
+import configureStore from './store/configureStore'
+
+const store = configureStore()
 
 ReactDOM.render(
   <AppContainer>
-    <App/>
+    <App store={store} history={history}/>
   </AppContainer>,
   document.getElementById('root')
 );
@@ -18,7 +24,7 @@ if (module.hot) {
     const NextApp = require('./containers/app').default;
     ReactDOM.render(
       <AppContainer>
-        <NextApp/>
+        <NextApp store={store} history={history}/>
       </AppContainer>,
       document.getElementById('root')
     );

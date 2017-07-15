@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
   const compiler = webpack(webpackConfig)
 
   app.use(webpackDevMiddleware(compiler, {
-    noInfo: true,
+    // noInfo: true,
     publicPath: webpackConfig.output.publicPath,
   }))
   app.use(webpackHotMiddleware(compiler, {
