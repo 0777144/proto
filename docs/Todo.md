@@ -1,24 +1,27 @@
 # Todo
 
-* ~~[tree-shaking](http://www.2ality.com/2015/12/webpack-tree-shaking.html)~~ 
-  Just use `import` and `export`, and when build use `webpack --optimize-minimize` option
-* server rendering (isomorphic) https://github.com/RickWong/react-isomorphic-starterkit
-* redux https://github.com/erikras/react-redux-universal-hot-example
+* ~~tree-shaking~~
+* SSR (isomorphic) [react-isomorphic-starterkit]
+* ~~redux~~
 * [fontgen](https://github.com/DragonsInn/fontgen-loader/) Разобраться с лоадером иконочных шрифтов
   * https://shellmonger.com/2016/01/22/working-with-fonts-with-webpack/
   * https://github.com/sunflowerdeath/webfonts-generator
   * Что лучше использовать? иконочный шрифт или спарйты
 * Вынести в `common`: `react`, `react-dom`
-* Вынести полифилы в один файл babel-loader?optional[]=runtime?
-https://babeljs.io/docs/plugins/transform-runtime/
-* NoErrorsPlugin
-* bundle-loader - понять как работает и почему там используется метод `pitch`
-* HRM
- * Почему и как работает
-* router
-* docs
+* Вынести babel-polyfill в отдельный бандл и transform-runtime
+* ~~HRM~~
+* ~~ReactRouter~~ Router5?
+* Docs
 * Подумать над структурой директорий ([mern])
-* Настроить еslint 
+* Настроить еslint
+* [webpack-common-shake]
+* [webpack-manifest-plugin]
+* CSS in JS
+  * [styled-jss]
+  * [babel-plugin-styled-jss]
+  * [jss]
+  * [react-css-modules]
+  * https://css-tricks.com/css-modules-part-3-react/
 
 
 [webpack 2.2.1]: https://github.com/webpack/webpack/tree/v2.2.1
@@ -28,3 +31,10 @@ https://babeljs.io/docs/plugins/transform-runtime/
 [SASS]: http://sass-lang.com/guide
 [webpack clean plugin]: https://github.com/johnagan/clean-webpack-plugin
 [mern]: http://mern.io/
+[react-isomorphic-starterkit]: https://github.com/RickWong/react-isomorphic-starterkit
+[webpack-common-shake]: https://github.com/indutny/webpack-common-shake
+[styled-jss]: https://github.com/cssinjs/styled-jss
+[babel-plugin-styled-jss]: https://github.com/lttb/babel-plugin-styled-jss
+[jss]: https://github.com/cssinjs/jss
+[react-css-modules]: https://github.com/gajus/react-css-modules
+[webpack-manifest-plugin]: https://github.com/danethurber/webpack-manifest-plugin

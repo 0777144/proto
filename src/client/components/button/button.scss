@@ -1,20 +1,18 @@
-@import '../../styles/variables';
 @import '../../styles/colors';
 
-.input
+.button
 {
-    padding: 5px;
     border: 2px solid #ddd;
+    background: none;
     font-size: 16px;
     line-height: 24px;
-    max-width: 500px;
-    width: 100%;
-    margin-bottom: 10px;
+
+    padding: 5px;
     border-radius: 3px;
+    cursor: pointer;
 }
 
-.input:focus
+.button:hover
 {
-    outline: none;
     border-color: $lightblue;
 }
