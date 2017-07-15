@@ -1,12 +1,8 @@
-
-
 import React from 'react'
 import {Link} from 'react-router-dom'
 
 import s from './post-list-item.scss'
-import {markdown} from '../../styles/markdown.scss'
-
-function createMarkup(html) {return {__html: html}}
+import Markdown from '../markdown'
 
 const PostListItem = ({title, slug, entrance, createdAt, onClick}) => (
   <article className={s.post}>
@@ -16,16 +12,16 @@ const PostListItem = ({title, slug, entrance, createdAt, onClick}) => (
       </h2>
       <aside className={s.date}>{createdAt}</aside>
     </header>
-    <section className={markdown} dangerouslySetInnerHTML={createMarkup(entrance)} />
+    <Markdown content={entrance}/>
   </article>
 )
 
-const PostList = (props) => (
+const PostList = props => (
   <div>
-    {props.posts.map((post) =>
+    {props.posts.map(post =>
       <PostListItem
         {...post}
-        key={post.title}
+        key={post.slug}
       />
     )}
   </div>
