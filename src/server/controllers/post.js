@@ -1,6 +1,7 @@
 
 
 import cuid from 'cuid'
+import slug from 'limax';
 import sanitizeHtml from 'sanitize-html'
 
 import markdownToHtml from '../util/markdownToHtml'
@@ -28,7 +29,7 @@ export function getPosts(req, res) {
  * @returns void
  */
 export function addPost(req, res) {
-  if (!req.body.post.name || !req.body.post.title || !req.body.post.content) {
+  if (!req.body.post.title || !req.body.post.content) {
     res.status(403).end()
   }
 
@@ -36,10 +37,13 @@ export function addPost(req, res) {
 
   // Let's sanitize inputs
   newPost.title = sanitizeHtml(newPost.title)
-  newPost.sourceContent = sanitizeHtml(newPost.sourceContent)
-  newPost.content = markdownToHtml(newPost.sourceContent)
+  newPost.sourceContent = sanitizeHtml(newPost.content)
+  newPost.content = markdownToHtml(newPost.content)
+  // TODO: cut content to entrance
+  newPost.entrance = newPost.content
 
-  //newPost.slug = slug(newPost.title.toLowerCase(), {lowercase: true})
+  // TODO: ensure slug doesn't exist
+  newPost.slug = slug(newPost.title, {lowercase: true})
   newPost.cuid = cuid()
   newPost.save((err, saved) => {
     if (err) {

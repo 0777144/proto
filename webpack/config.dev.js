@@ -62,11 +62,26 @@ module.exports = {
         ]
       },
       {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          cssLoader,
-          'postcss-loader'
+        oneOf: [
+          {
+            test: /\.css$/,
+            include: [
+              path.join(rootPath, 'node_modules', 'antd')
+            ],
+            use: [
+              'style-loader',
+              'css-loader',
+              'postcss-loader',
+            ]
+          },
+          {
+            test: /\.css$/,
+            use: [
+              'style-loader',
+              cssLoader,
+              'postcss-loader',
+            ],
+          },
         ]
       },
       {
@@ -75,8 +90,8 @@ module.exports = {
           'style-loader',
           cssLoader,
           'postcss-loader',
-          'sass-loader'
-        ]
+          'sass-loader',
+        ],
       },
       {
         test: /\.svg/,
@@ -112,7 +127,7 @@ module.exports = {
     ]
   },
 
-  devtool: 'cheap-inline-source-map',
+  devtool: 'source-map',
 
   plugins: [
     new ExtractTextPlugin('[name].bundle.css'),
@@ -120,6 +135,9 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-    })
+    }),
+    new webpack.ContextReplacementPlugin(
+      /antd/
+    )
   ]
 };

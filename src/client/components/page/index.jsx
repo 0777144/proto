@@ -1,13 +1,19 @@
 
 
 import React from 'react'
+import {Link} from 'react-router-dom'
+
 import Container from '../container';
-import {page, title} from './page.scss';
+import PageHeader from '../page-header';
+import {page} from './page.scss';
 
 const Page = (props) => (
   <main className={page}>
     <Container>
-      <h1 className={title}>{props.title}</h1>
+      <PageHeader title={props.title}>
+        {props.header}
+      </PageHeader>
+
       {props.children}
     </Container>
   </main>

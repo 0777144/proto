@@ -1,4 +1,5 @@
 
+import {push} from 'react-router-redux'
 
 import Request from 'superagent'
 
@@ -23,7 +24,8 @@ export function fetchPosts() {
   return function (dispatch) {
     dispatch(requestPosts())
 
-    Request.get('/api/posts')
+    Request
+      .get('/api/posts')
       .then(data => data.body.posts)
       .then(posts => dispatch(receivePosts(posts)))
   }
@@ -50,8 +52,21 @@ export function fetchPost(slug) {
   return function (dispatch) {
     dispatch(requestPost())
 
-    Request.get(`/api/posts/${slug}`)
+    Request
+      .get(`/api/posts/${slug}`)
       .then(data => data.body.post)
       .then(post => dispatch(receivePost(post)))
+  }
+}
+
+export function createPost(data) {
+  return function (dispatch) {
+    Request
+      .post('/api/posts')
+      .send({
+        post: data
+      })
+      .then(data => data.body.post)
+      .then(post => dispatch(push(`/posts/${post.slug}`)))
   }
 }

@@ -13,6 +13,7 @@ import configureStore from '../../store/configureStore'
 import Layout from '../../components/layout'
 import PagePosts from '../../pages/PagePosts'
 import PagePost from '../../pages/PagePost'
+import PagePostCreate from '../../pages/PagePostCreate'
 
 const store = configureStore()
 
@@ -22,6 +23,7 @@ const App = (props) => (
       <Layout>
         <Route exact path="/" component={PagePosts}/>
         <Route path="/posts/:slug" component={PagePost}/>
+        <Route path="/post/create" component={PagePostCreate}/>
       </Layout>
     </ConnectedRouter>
   </Provider>
