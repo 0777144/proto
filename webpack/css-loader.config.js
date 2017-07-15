@@ -1,6 +1,4 @@
-
-
-module.exports = {
+export default{
   loader: 'css-loader',
   options: {
     modules: true,

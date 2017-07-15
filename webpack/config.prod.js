@@ -1,5 +1,6 @@
 import path from 'path'
 import webpack from 'webpack'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import cssLoader from './css-loader.config'
 
 const rootPath = path.resolve(process.cwd())
@@ -14,7 +15,6 @@ export default {
     app: [
       'webpack-hot-middleware/client',
       'babel-polyfill',
-      'react-hot-loader/patch',
       './index.jsx'
     ]
   },
@@ -103,20 +103,21 @@ export default {
               plugins: [
                 {removeTitle: true},
                 {convertColors: {shorthex: false}},
-                {convertPathData: false},
-              ],
-            },
-          },
+                {convertPathData: false}
+              ]
+            }
+          }
         ]
       },
       // TODO: icon fonts vs icon sprites
       {
         test: /\.font.js$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'fontgen-loader?embed',
-        ],
+        loader: ExtractTextPlugin.extract({
+          use: [
+            'css-loader',
+            'fontgen-loader?embed'
+          ]
+        })
       }
     ]
   },
@@ -124,6 +125,7 @@ export default {
   devtool: 'source-map',
 
   plugins: [
+    new ExtractTextPlugin('[name].bundle.css'),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({

@@ -9,7 +9,7 @@ import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 
-import config from '../../webpack/config'
+import webpackConfig from '../../webpack.config'
 import router from './router'
 import seed from './seeds'
 
@@ -17,10 +17,15 @@ const app = express()
 
 // Run Webpack dev server in development mode
 if (process.env.NODE_ENV !== 'production') {
-  const compiler = webpack(config)
+  const compiler = webpack(webpackConfig)
 
-  app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: config.output.publicPath}))
-  app.use(webpackHotMiddleware(compiler))
+  app.use(webpackDevMiddleware(compiler, {
+    noInfo: true,
+    publicPath: webpackConfig.output.publicPath,
+  }))
+  app.use(webpackHotMiddleware(compiler, {
+    log: console.log, path: '/__webpack_hmr', heartbeat: 10 * 1000
+  }))
 }
 
 // Set native promises as mongoose promise

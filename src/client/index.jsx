@@ -5,18 +5,22 @@ import ReactDOM from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
 import App from 'containers/app';
 
-const render = (Component) => {
-  ReactDOM.render(
-    <AppContainer>
-      <Component />
-    </AppContainer>,
-    document.getElementById('root')
-  );
-};
-
-render(App);
+ReactDOM.render(
+  <AppContainer>
+    <App/>
+  </AppContainer>,
+  document.getElementById('root')
+);
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./containers/app', () => { render(App); });
+  module.hot.accept('./containers/app', () => {
+    const NextApp = require('./containers/app').default;
+    ReactDOM.render(
+      <AppContainer>
+        <NextApp/>
+      </AppContainer>,
+      document.getElementById('root')
+    );
+  });
 }
