@@ -2,39 +2,57 @@
 
 ## Getting Started
 
-запускаем MongoDB указывая на папку database как хранилище.
-И что бы файлы были маленькими передаем параметр --smallfiles,
-хотя даже в таком случае MongoDB будет хранить логи размером 200МБ
-в папке ./storage/database/journal
-
-### Start a MongoDB Server
-```bash
-mongod --dbpath storage/database --smallfiles
-```
-
-### Install dependencies
+### Clone repo
 
 ```bash
 git clone https://github.com/0777144/proto && cd proto
 ```
 
-### Environment Configuration
+
+### Start a MongoDB Server
+
+запускаем MongoDB указывая на папку database как хранилище.
+И что бы файлы были маленькими передаем параметр --smallfiles,
+хотя даже в таком случае MongoDB будет хранить логи размером 200МБ
+в папке ./storage/database/journal
+
+```bash
+mongod --dbpath storage/database --smallfiles
 ```
+
+
+### Configure environment
+
+```bash
 cp .env.example .env
 ```
 
-### Start a Node.js server
+
+### Install dependencies
 
 ```
 npm install
+```
+
+or
+
+```bash
+yarn
+```
+
+
+### Start a Node.js server
+
+```bash
 npm run server
 ```
 
 or
 
+```bash
+yarn server
 ```
-yarn && yarn server
-```
+
 
 ## Features
 
