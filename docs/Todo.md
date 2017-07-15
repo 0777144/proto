@@ -22,6 +22,7 @@
   * [jss]
   * [react-css-modules]
   * https://css-tricks.com/css-modules-part-3-react/
+  * [recompose] [why-the-hipsters-recompose-everything]
 
 
 [webpack 2.2.1]: https://github.com/webpack/webpack/tree/v2.2.1
@@ -38,3 +39,5 @@
 [jss]: https://github.com/cssinjs/jss
 [react-css-modules]: https://github.com/gajus/react-css-modules
 [webpack-manifest-plugin]: https://github.com/danethurber/webpack-manifest-plugin
+[recompose]: https://github.com/acdlite/recompose
+[why-the-hipsters-recompose-everything]: https://medium.com/javascript-inside/why-the-hipsters-recompose-everything-23ac08748198
