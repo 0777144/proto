@@ -7,7 +7,6 @@ import {Provider} from 'react-redux'
 import {ConnectedRouter} from 'react-router-redux'
 
 import App from './components/App';
-
 import history from './history'
 import configureStore from './store/configureStore'
 
