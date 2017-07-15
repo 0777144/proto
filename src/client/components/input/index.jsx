@@ -11,23 +11,19 @@ class Input extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        {this.props.type === 'textarea' ? (
-          <textarea
-            {...this.props}
-            role='textbox'
-            className={styles.input}
-            ref="input"
-          />
+    return this.props.type === 'textarea' ? (
+      <textarea
+        {...this.props}
+        role='textbox'
+        className={styles.input}
+        ref="input"
+      />
         ) : (
-          <input
-            {...this.props}
-            className={styles.input}
-            ref='input'
-          />
-        )}
-      </div>
+      <input
+        {...this.props}
+        className={styles.input}
+        ref='input'
+      />
     )
   }
 }
