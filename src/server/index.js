@@ -1,5 +1,3 @@
-
-
 import path from 'path'
 import express from 'express'
 import compression from 'compression'
@@ -10,6 +8,7 @@ import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 
 import webpackConfig from '../../webpack.config'
+import handleRender from './handleRender'
 import router from './router'
 import seed from './seeds'
 
@@ -49,16 +48,21 @@ mongoose.connect(process.env.MONGO_URL, {useMongoClient: true}, error => {
 // Apply body Parser and server public assets and routes
 app.use(compression())
 
-app.use(express.static(path.join(process.cwd(), 'public')))
+// TODO: remove index.html
+// TODO: add favicon
+// app.use(express.static(path.join(process.cwd(), 'public')))
 
 app.use(bodyParser.json({limit: '20mb'}))
 app.use(bodyParser.urlencoded({limit: '20mb', extended: false}))
 
 app.use('/api', router)
 
-app.use((req, res) => {
-  res.sendFile(path.join(process.cwd(), 'public', 'index.html'))
-})
+// app.use((req, res) => {
+//   res.sendFile(path.join(process.cwd(), 'public', 'index.html'))
+// })
+
+// This is fired every time the server side receives a request
+app.use(handleRender)
 
 app.listen(process.env.NODE_PORT, () => {
   console.log(`Server started: http://localhost:${process.env.NODE_PORT}`) // eslint-disable-line no-console

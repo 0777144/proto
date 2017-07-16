@@ -1,6 +1,7 @@
 {
   "verbose": true,
   "delay": "500",
+  "ext": "*.js,*.jsx,*.json",
   "ignore": [
     "docs",
     "storage",

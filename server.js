@@ -8,6 +8,10 @@ if (process.env.NODE_ENV === 'production') {
   //require('./dist/server.bundle.js');
 } else {
   require('babel-register')({
+    presets: [
+      'react',
+      'stage-3',
+    ],
     plugins: ['transform-es2015-modules-commonjs']
   })
 
