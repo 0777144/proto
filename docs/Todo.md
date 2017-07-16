@@ -23,7 +23,8 @@
   * [react-css-modules]
   * https://css-tricks.com/css-modules-part-3-react/
   * [recompose] [why-the-hipsters-recompose-everything]
-
+* Попробовать [rebass] [rebass-recomposed]
+* Сделать анимация поиска как на scotch.io
 
 [webpack 2.2.1]: https://github.com/webpack/webpack/tree/v2.2.1
 [ES6]: http://es6-features.org/
@@ -41,3 +42,5 @@
 [webpack-manifest-plugin]: https://github.com/danethurber/webpack-manifest-plugin
 [recompose]: https://github.com/acdlite/recompose
 [why-the-hipsters-recompose-everything]: https://medium.com/javascript-inside/why-the-hipsters-recompose-everything-23ac08748198
+[rebass]: https://github.com/jxnblk/rebass
+[rebass-recomposed]: https://github.com/jxnblk/rebass-recomposed
