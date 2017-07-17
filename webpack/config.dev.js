@@ -2,6 +2,7 @@ import path from 'path'
 import webpack from 'webpack'
 import moment from 'moment'
 import AutoDllPlugin from 'autodll-webpack-plugin'
+import precss from 'precss'
 
 import cssLoader from './css-loader.config'
 
@@ -9,6 +10,21 @@ const rootPath = path.resolve(process.cwd())
 const distPath = path.join(rootPath, 'public', 'dist')
 const clientPath = path.join(rootPath, 'src', 'client')
 const publicPath = `http://localhost:${process.env.NODE_PORT}/dist/`
+
+const postCssLoader = {
+  loader: 'postcss-loader',
+  options: {
+    parser: 'postcss-scss',
+    plugins: [
+      precss({
+        import: {
+          extension: '.scss'
+        }
+      }),
+      require('autoprefixer')(),
+    ],
+  }
+}
 
 export default {
   context: clientPath,
@@ -78,7 +94,14 @@ export default {
         use: [
           'style-loader',
           cssLoader,
-          'postcss-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [
+                require('autoprefixer')(),
+              ],
+            }
+          },
         ],
       },
       {
@@ -86,8 +109,7 @@ export default {
         use: [
           'style-loader',
           cssLoader,
-          'postcss-loader',
-          'sass-loader',
+          postCssLoader,
         ],
       },
       {
