@@ -25,6 +25,7 @@
   * [recompose] [why-the-hipsters-recompose-everything]
 * Попробовать [rebass] [rebass-recomposed]
 * Сделать анимация поиска как на scotch.io
+* `new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|ru/),`
 
 [webpack 2.2.1]: https://github.com/webpack/webpack/tree/v2.2.1
 [ES6]: http://es6-features.org/
