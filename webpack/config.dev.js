@@ -1,5 +1,6 @@
 import path from 'path'
 import webpack from 'webpack'
+import moment from 'moment'
 import cssLoader from './css-loader.config'
 
 const rootPath = path.resolve(process.cwd())
@@ -107,7 +108,7 @@ export default {
               ],
             },
           },
-        ]
+        ],
       },
       // TODO: icon fonts vs icon sprites
       {
@@ -129,5 +130,8 @@ export default {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
     }),
+    function(compiler) {
+      this.plugin('done', () => console.log('Build ended:', moment().format('HH:mm:ss')));
+    },
   ]
 }
