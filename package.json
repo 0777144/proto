@@ -52,6 +52,7 @@
     "webfonts-generator": "^0.4.0"
   },
   "devDependencies": {
+    "autodll-webpack-plugin": "^0.2.1",
     "autoprefixer": "^6.7.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",

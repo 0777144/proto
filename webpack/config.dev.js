@@ -1,6 +1,8 @@
 import path from 'path'
 import webpack from 'webpack'
 import moment from 'moment'
+import AutoDllPlugin from 'autodll-webpack-plugin'
+
 import cssLoader from './css-loader.config'
 
 const rootPath = path.resolve(process.cwd())
@@ -16,7 +18,7 @@ export default {
       'webpack-hot-middleware/client',
       'babel-polyfill',
       'react-hot-loader/patch',
-      './index.jsx'
+      './index.jsx',
     ]
   },
 
@@ -25,13 +27,13 @@ export default {
     path: distPath,
     pathinfo: true,
     publicPath,
-    chunkFilename: '[id].js'
+    chunkFilename: '[id].js',
   },
 
   resolve: {
     modules: [
       clientPath,
-      path.join(rootPath, 'node_modules')
+      path.join(rootPath, 'node_modules'),
     ],
     extensions: [
       '.js',
@@ -40,8 +42,8 @@ export default {
       '.scss',
       '.css',
       '.svg',
-      '.font.js'
-    ]
+      '.font.js',
+    ],
   },
 
   module: {
@@ -49,10 +51,10 @@ export default {
       {
         test: /\.jsx?$/,
         include: [
-          clientPath
+          clientPath,
         ],
         exclude: [
-          /node_modules/
+          /node_modules/,
         ],
         use: [
           {
@@ -66,11 +68,10 @@ export default {
               plugins: [
                 'transform-runtime',
                 'react-hot-loader/babel',
-              ]
-            }
-
-          }
-        ]
+              ],
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
@@ -95,8 +96,8 @@ export default {
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[ext]' // [name]___[hash:base64:5].[ext]
-            }
+              name: '[name].[ext]', // [name]___[hash:base64:5].[ext]
+            },
           },
           {
             loader: 'svgo-loader',
@@ -118,8 +119,8 @@ export default {
           'css-loader',
           'fontgen-loader?embed',
         ],
-      }
-    ]
+      },
+    ],
   },
 
   devtool: 'source-map',
@@ -128,9 +129,21 @@ export default {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
     }),
-    function(compiler) {
+    new AutoDllPlugin({
+      debug: true,
+      context: rootPath,
+      filename: '[name].dll.js',
+      entry: {
+        vendor: [
+          'react',
+          'react-dom',
+          'moment',
+        ],
+      },
+    }),
+    function() {
       this.plugin('done', () => console.log('Build ended:', moment().format('HH:mm:ss')));
     },
   ]
