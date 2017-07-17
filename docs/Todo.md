@@ -28,6 +28,7 @@
 * `new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|ru/),`
 * postcss
 * stylelint
+* check unused dependencies!!!
 
 
 [webpack 2.2.1]: https://github.com/webpack/webpack/tree/v2.2.1
