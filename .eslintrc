@@ -2,10 +2,6 @@
   "extends": "airbnb",
   "parser": "babel-eslint",
   "rules": {
-    "comma-dangle": [
-      "error",
-      "never"
-    ],
     "global-require": 0,
     "import/no-dynamic-require": 0,
     "import/no-unresolved": [0, {"ignore": ["scss"]}],

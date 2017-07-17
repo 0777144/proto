@@ -13,7 +13,7 @@
 * ~~ReactRouter~~ Router5?
 * Docs
 * Подумать над структурой директорий ([mern])
-* Настроить еslint
+* еslint + eslint warrnings при сборке вебпаком
 * [webpack-common-shake]
 * [webpack-manifest-plugin]
 * CSS in JS
@@ -26,6 +26,9 @@
 * Попробовать [rebass] [rebass-recomposed]
 * Сделать анимация поиска как на scotch.io
 * `new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|ru/),`
+* postcss
+* stylelint
+
 
 [webpack 2.2.1]: https://github.com/webpack/webpack/tree/v2.2.1
 [ES6]: http://es6-features.org/
