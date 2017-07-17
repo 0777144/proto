@@ -1,10 +1,9 @@
-
-
 import React from 'react'
 import {Route} from 'react-router'
 
-import 'styles/icon.font.js'
-import 'styles/index.scss'
+import '../styles/icon.font.js'
+import '../styles/reset.css'
+import '../styles/index.css'
 
 import Layout from './layout'
 import PagePosts from '../pages/PagePosts'

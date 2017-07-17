@@ -2,8 +2,8 @@
 
 import React from 'react'
 
-import Page from 'components/page'
-import PostContainer from 'containers/post'
+import Page from '../components/page'
+import PostContainer from '../containers/post'
 
 const PagePost = ({match}) => (
   <Page title="Post">

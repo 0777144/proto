@@ -1,14 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {AppContainer} from 'react-hot-loader';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {AppContainer} from 'react-hot-loader'
 import {Provider} from 'react-redux'
 import {ConnectedRouter} from 'react-router-redux'
 
-import App from './components/App';
+import App from './components/App'
 import history from './history'
 import configureStore from './store/configureStore'
 
-const store = configureStore()
+// Grab the state from a global variable injected into the server-generated HTML
+const preloadedState = window.__PRELOADED_STATE__
+
+// Allow the passed state to be garbage-collected
+delete window.__PRELOADED_STATE__
+
+const store = configureStore(preloadedState)
 
 const renderApp = (AppComponent) => {
   ReactDOM.render(

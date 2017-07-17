@@ -1,15 +1,26 @@
 import React from 'react'
 import {renderToString} from 'react-dom/server'
+import {Provider} from 'react-redux'
+import {ConnectedRouter} from 'react-router-redux'
+
+import App from '../client/components/App'
+import history from '../client/history'
+import configureStore from '../client/store/configureStore'
+
+const store = configureStore()
 
 function handleRender(req, res) {
   // Render the component to a string
   const html = renderToString(
-    <div>Loading...</div>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+          <App/>
+      </ConnectedRouter>
+    </Provider>
   )
 
   // Grab the initial state from our Redux store
-  // const preloadedState = store.getState()
-  const preloadedState = {}
+  const preloadedState = store.getState()
 
   // Send the rendered page back to the client
   res.send(renderFullPage(html, preloadedState))

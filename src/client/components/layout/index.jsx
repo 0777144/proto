@@ -1,13 +1,11 @@
-
-
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-import Nav from 'components/nav'
-import Footer from 'components/footer'
-import Logo from 'components/logo'
+import Nav from '../../components/nav'
+import Footer from '../../components/footer'
+import Logo from '../../components/logo'
 
-import {icon as navIcon} from 'components/footer/footer.scss'
+import {icon as navIcon} from '../../components/footer/footer.scss'
 
 const Layout = ({children, ...props}) => (
   <div {...props}>

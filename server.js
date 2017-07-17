@@ -12,7 +12,16 @@ if (process.env.NODE_ENV === 'production') {
       'react',
       'stage-3',
     ],
-    plugins: ['transform-es2015-modules-commonjs']
+    plugins: [
+      'transform-es2015-modules-commonjs',
+      [
+        "css-modules-transform", {
+          "preprocessCss": "./webpack/sass-loader.js",
+          "generateScopedName": "[hash:8]",
+          "extensions": [".css", ".scss"]
+        }
+      ],
+    ]
   })
 
   require('./src/server/index')

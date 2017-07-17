@@ -2,9 +2,9 @@
 
 import React, {Component} from 'react'
 
-import Form from 'components/form'
-import Input from 'components/input'
-import Button from 'components/button'
+import Form from '../../components/form'
+import Input from '../../components/input'
+import Button from '../../components/button'
 // import s from './post-form-create.scss'
 
 class PostFormCreate extends Component {
