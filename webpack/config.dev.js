@@ -9,7 +9,7 @@ import cssLoader from './css-loader.config'
 const rootPath = path.resolve(process.cwd())
 const distPath = path.join(rootPath, 'public', 'dist')
 const clientPath = path.join(rootPath, 'src', 'client')
-const publicPath = `http://localhost:${process.env.NODE_PORT}/dist/`
+const publicPath = '/dist/'
 
 const postCssLoader = {
   loader: 'postcss-loader',
@@ -33,7 +33,6 @@ export default {
   entry: {
     app: [
       'webpack-hot-middleware/client',
-      'babel-polyfill',
       'react-hot-loader/patch',
       './index.jsx',
     ]
@@ -151,6 +150,7 @@ export default {
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),

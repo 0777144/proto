@@ -9,8 +9,9 @@ import history from './history'
 import configureStore from './store/configureStore'
 
 const store = configureStore()
+const rootEl = document.getElementById('root')
 
-const renderApp = (AppComponent) => {
+const renderApp = AppComponent =>
   ReactDOM.render(
     <Provider store={store}>
       <ConnectedRouter history={history}>
@@ -19,16 +20,12 @@ const renderApp = (AppComponent) => {
         </AppContainer>
       </ConnectedRouter>
     </Provider>,
-    document.getElementById('root')
+    rootEl
   )
-}
 
 renderApp(App)
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
-    const NextApp = require('./components/App').default
-    renderApp(NextApp)
-  })
+  module.hot.accept('./components/App', () => renderApp(App))
 }
