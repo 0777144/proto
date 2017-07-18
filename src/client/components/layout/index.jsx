@@ -1,24 +1,25 @@
-
-
 import React from 'react'
-import {Link} from 'react-router-dom'
 
-import Nav from 'components/nav'
-import Footer from 'components/footer'
-import Logo from 'components/logo'
-
-import {icon as navIcon} from 'components/footer/footer.scss'
+import Nav from '../nav'
+import Footer from '../footer'
+import Logo from '../logo'
+import Link from '../link'
+import Icon from '../icon'
 
 const Layout = ({children, ...props}) => (
   <div {...props}>
     <Nav>
-      <Link to="/"><Logo/></Link>
+      <Link clear to="/">
+        <Logo/>
+      </Link>
     </Nav>
 
     {children}
 
     <Footer>
-      <Link className={navIcon} to='https://github.com/0777144/proto' target='_blank' rel='noopener noreferrer'><i className='icon-github' /></Link>
+      <Link clear to='https://github.com/0777144/proto' target='_blank' rel='noopener noreferrer'>
+        <Icon type='github'/>
+      </Link>
     </Footer>
   </div>
 )

@@ -26,7 +26,7 @@
 * Попробовать [rebass] [rebass-recomposed]
 * Сделать анимация поиска как на scotch.io
 * `new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|ru/),`
-* postcss
+* ~~postcss scss~~
 * stylelint
 * check unused dependencies!!!
 

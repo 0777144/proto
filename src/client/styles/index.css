@@ -5,7 +5,14 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700&amp;subset=cyrillic,cyrillic-ext);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&amp;subset=cyrillic,cyrillic-ext);
 
+html
+{
+    position: relative;
+    min-height: 100%;
+}
+
 body
 {
     font-family: 'Open Sans', sans-serif;
+    margin: 0 0 85px; /* bottom = footer height + 20 = 65 + 20*/
 }

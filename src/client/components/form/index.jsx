@@ -1,14 +1,14 @@
-
-
 import React from 'react'
+import classNames from 'classnames'
 
-import styles from './form'
+import styles from './styles'
 
 const Form = ({
   children,
+  className,
   ...props
 }) => (
-  <form className={styles.form} {...props}>
+  <form {...props} className={classNames(styles.form, className)}>
     {children}
   </form>
 )

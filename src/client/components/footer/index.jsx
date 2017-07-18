@@ -1,12 +1,11 @@
-
-
 import React from 'react'
 import Container from '../container'
-import {footer, container} from './footer.scss'
+
+import styles from './styles'
 
 const Footer = (props) => (
-  <footer className={footer}>
-    <Container className={container}>
+  <footer className={styles.footer}>
+    <Container>
       {props.children}
     </Container>
   </footer>

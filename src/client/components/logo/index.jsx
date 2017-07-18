@@ -1,10 +1,9 @@
-
-
 import React from 'react';
-import {protoLogo} from './logo.scss';
 
-const Logo = (props) => (
-  <span className={protoLogo} />
-);
+import styles from './styles';
+
+const Logo = props => (
+  <span className={styles.protoLogo}/>
+)
 
 export default Logo

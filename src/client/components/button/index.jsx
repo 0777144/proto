@@ -1,24 +1,36 @@
-
-
 import React from 'react'
 import {Link} from 'react-router-dom'
+import classNames from 'classnames'
 
-import {button, icon} from './button.scss'
-
-const classNames = ({className, type}) => `${button} ${className} ${type === 'icon' && icon}`
+import styles from './styles'
 
 const Button = ({
   text,
   children,
+  className,
   ...props
-}) => !props.to ? (
-  <button {...props} className={classNames(props)}>
-    {children || text}
-  </button>
-) : (
-  <Link {...props} className={classNames(props)}>
-    {children || text}
-  </Link>
-)
+}) => {
+  className = classNames(
+    className,
+    styles.button,
+    {[styles.icon]: props.type === 'icon'}
+  )
+
+  return !props.to ? (
+    <button
+      {...props}
+      className={className}
+    >
+      {children || text}
+    </button>
+  ) : (
+    <Link
+      {...props}
+      className={className}
+    >
+      {children || text}
+    </Link>
+  )
+}
 
 export default Button

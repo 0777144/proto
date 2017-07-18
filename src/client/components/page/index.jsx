@@ -1,11 +1,9 @@
-
-
 import React from 'react'
 import {Link} from 'react-router-dom'
 
 import Container from '../container';
 import PageHeader from '../page-header';
-import {page} from './page.scss';
+import {page} from './styles';
 
 const Page = (props) => (
   <main className={page}>
