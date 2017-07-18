@@ -8,7 +8,7 @@ const styles = {
     margin: '20px auto 0 auto',
     padding: '0 20px',
     display: 'inline-block',
-    color: 'green',
+    color: 'red',
   },
 }
 
