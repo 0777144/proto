@@ -27,6 +27,7 @@ const postCssLoader = {
 }
 
 export default {
+  cache: true,
   context: clientPath,
 
   entry: {
@@ -76,6 +77,7 @@ export default {
           {
             loader: 'babel-loader',
             options: {
+              cacheDirectory: true,
               presets: [
                 'react',
                 'stage-3',
@@ -145,7 +147,7 @@ export default {
     ],
   },
 
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -159,11 +161,31 @@ export default {
       filename: '[name].dll.js',
       entry: {
         vendor: [
+          'babel-polyfill',
+          'classnames',
+          'history',
+          'moment',
+          'prop-types',
           'react',
           'react-dom',
-          'moment',
+          'react-redux',
+          'react-router',
+          'react-router-dom',
+          'react-router-redux',
+          'redux',
+          'redux-logger',
+          'redux-thunk',
+          'superagent',
         ],
       },
+      plugins: [
+        new webpack.ContextReplacementPlugin(
+          // The path to directory which should be handled by this plugin
+          /moment[\/\\]locale/,
+          // A regular expression matching files that should be included
+          /(en-gb|ru)\.js/
+        ),
+      ],
     }),
     function() {
       this.plugin('done', () => console.log('Build ended:', moment().format('HH:mm:ss')));

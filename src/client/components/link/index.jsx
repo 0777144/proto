@@ -4,8 +4,6 @@ import classNames from 'classnames'
 
 import styles from './styles'
 
-console.log(styles)
-
 const Link = ({
   clear,
   ...props,

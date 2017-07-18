@@ -1,6 +1,4 @@
-
 import {push} from 'react-router-redux'
-
 import Request from 'superagent'
 
 export const REQUEST_POSTS = 'REQUEST_POSTS'

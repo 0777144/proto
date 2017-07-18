@@ -29,6 +29,9 @@
 * ~~postcss scss~~
 * stylelint
 * check unused dependencies!!!
+* оптимизация сборки https://survivejs.com/webpack/optimizing/performance/
+* авторизация https://vladimirponomarev.com/blog/authentication-in-react-apps-jwt
+* postcss plugin order?
 
 
 [webpack 2.2.1]: https://github.com/webpack/webpack/tree/v2.2.1
