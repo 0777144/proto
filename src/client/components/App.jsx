@@ -1,5 +1,6 @@
 import React from 'react'
 import {Route} from 'react-router'
+import {ThemeProvider} from 'react-jss'
 
 import 'styles/reset.css'
 import 'styles/index.css'

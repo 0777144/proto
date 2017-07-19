@@ -1,6 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {AppContainer} from 'react-hot-loader';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {AppContainer} from 'react-hot-loader'
 import {Provider} from 'react-redux'
 import {ConnectedRouter} from 'react-router-redux'
 
@@ -20,7 +20,7 @@ const renderApp = () =>
         </AppContainer>
       </ConnectedRouter>
     </Provider>,
-    rootEl
+    rootEl,
   )
 
 renderApp()
