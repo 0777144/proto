@@ -1,11 +1,11 @@
 import React from 'react'
 import Container from '../container'
 
-import {nav, container} from './styles'
+import styles from './styles'
 
 const Nav = props => (
-  <nav className={nav}>
-    <Container className={container}>
+  <nav className={styles.nav}>
+    <Container className={styles.container}>
       {props.children}
     </Container>
   </nav>

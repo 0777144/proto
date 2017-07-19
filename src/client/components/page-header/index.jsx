@@ -1,10 +1,10 @@
 import React from 'react'
 
-import {title} from './styles'
+import styles from './styles'
 
 const PageHeader = props => (
   <header>
-    <h1 className={title}>
+    <h1 className={styles.title}>
       {props.title}
     </h1>
     

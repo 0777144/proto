@@ -3,10 +3,10 @@ import {Link} from 'react-router-dom'
 
 import Container from '../container';
 import PageHeader from '../page-header';
-import {page} from './styles';
+import styles from './styles';
 
 const Page = (props) => (
-  <main className={page}>
+  <main className={styles.page}>
     <Container>
       <PageHeader title={props.title}>
         {props.header}

@@ -1,8 +1,8 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 
+import Link from '../link'
 import Markdown from '../markdown'
-import style from './style'
+import styles from './styles'
 
 const PostListItem = ({
   title,
@@ -11,12 +11,12 @@ const PostListItem = ({
   createdAt,
   onClick,
 }) => (
-  <article className={style.post}>
-    <header className={style.header}>
-      <h2 className={style.title}>
-        <Link to={`/posts/${slug}`} className={style.link}>{title}</Link>
+  <article className={styles.post}>
+    <header className={styles.header}>
+      <h2 className={styles.title}>
+        <Link to={`/posts/${slug}`}>{title}</Link>
       </h2>
-      <aside className={style.date}>{createdAt}</aside>
+      <aside className={styles.date}>{createdAt}</aside>
     </header>
     <Markdown content={entrance}/>
   </article>

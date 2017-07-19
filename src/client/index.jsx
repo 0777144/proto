@@ -11,21 +11,21 @@ import configureStore from './store/configureStore'
 const store = configureStore()
 const rootEl = document.getElementById('root')
 
-const renderApp = AppComponent =>
+const renderApp = () =>
   ReactDOM.render(
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <AppContainer>
-          <AppComponent/>
+          <App/>
         </AppContainer>
       </ConnectedRouter>
     </Provider>,
     rootEl
   )
 
-renderApp(App)
+renderApp()
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./components/App', () => renderApp(App))
+  module.hot.accept('./components/App', renderApp)
 }
