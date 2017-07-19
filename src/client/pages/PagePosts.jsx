@@ -1,13 +1,11 @@
-
-
 import React from 'react'
-import {Link} from 'react-router-dom'
 
-import Button from 'components/button'
-import Page from 'components/page'
-import PostListContainer from 'containers/post-list'
+import Link from '../components/link'
+import Icon from '../components/icon'
+import Page from '../components/page'
+import PostListContainer from '../containers/post-list'
 
-const iconCreate = <Button type='icon' to='/post/create' className='icon-edit'/>
+const iconCreate = <Link clear to='/post/create'><Icon type='edit'/></Link>
 
 const PagePosts = () => (
   <Page
