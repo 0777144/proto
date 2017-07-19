@@ -2,29 +2,14 @@ import path from 'path'
 import webpack from 'webpack'
 import moment from 'moment'
 import AutoDllPlugin from 'autodll-webpack-plugin'
-import precss from 'precss'
 
-import cssLoader from './css-loader.config'
+import cssLoader from './css-loader'
+import postcssLoader from './postcss-loader'
 
 const rootPath = path.resolve(process.cwd())
 const distPath = path.join(rootPath, 'public', 'dist')
 const clientPath = path.join(rootPath, 'src', 'client')
 const publicPath = '/dist/'
-
-const postCssLoader = {
-  loader: 'postcss-loader',
-  options: {
-    parser: 'postcss-scss',
-    plugins: [
-      precss({
-        import: {
-          extension: '.scss'
-        }
-      }),
-      require('autoprefixer')(),
-    ],
-  }
-}
 
 export default {
   cache: true,
@@ -58,7 +43,6 @@ export default {
       '.scss',
       '.css',
       '.svg',
-      '.font.js',
     ],
   },
 
@@ -91,26 +75,11 @@ export default {
         ],
       },
       {
-        test: /\.css$/,
+        test: /\.(scss|css)$/,
         use: [
           'style-loader',
           cssLoader,
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: [
-                require('autoprefixer')(),
-              ],
-            }
-          },
-        ],
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          cssLoader,
-          postCssLoader,
+          postcssLoader,
         ],
       },
       {
