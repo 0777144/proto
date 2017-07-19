@@ -1,5 +1,3 @@
-
-
 import {Router} from 'express';
 import * as PostController from './controllers/post';
 
