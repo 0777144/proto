@@ -1,5 +1,5 @@
 import cuid from 'cuid'
-import slug from 'limax';
+import slug from 'limax'
 import sanitizeHtml from 'sanitize-html'
 
 import markdownToHtml from '../util/markdownToHtml'
@@ -29,7 +29,8 @@ export function getPosts(req, res) {
 export function addPost(req, res) {
   // TODO: возврашать норм ошибку
   if (!req.body.post.title || !req.body.post.content) {
-    return res.status(403).end()
+    res.status(403).end()
+    return
   }
 
   const newPost = new Post(req.body.post)

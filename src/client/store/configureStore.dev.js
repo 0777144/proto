@@ -18,7 +18,7 @@ const configureStore = initialState => {
       routerMiddleware(history),
       thunkMiddleware,
       loggerMiddleware,
-    )
+    ),
   )
 
   if (module.hot) {

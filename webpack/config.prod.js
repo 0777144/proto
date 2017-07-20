@@ -15,8 +15,8 @@ export default {
     app: [
       'webpack-hot-middleware/client',
       'babel-polyfill',
-      './index.jsx'
-    ]
+      './index.jsx',
+    ],
   },
 
   output: {
@@ -24,13 +24,13 @@ export default {
     path: distPath,
     pathinfo: true,
     publicPath,
-    chunkFilename: '[id].js'
+    chunkFilename: '[id].js',
   },
 
   resolve: {
     modules: [
       clientPath,
-      path.join(rootPath, 'node_modules')
+      path.join(rootPath, 'node_modules'),
     ],
     extensions: [
       '.js',
@@ -39,8 +39,8 @@ export default {
       '.scss',
       '.css',
       '.svg',
-      '.font.js'
-    ]
+      '.font.js',
+    ],
   },
 
   module: {
@@ -48,10 +48,10 @@ export default {
       {
         test: /\.jsx?$/,
         include: [
-          clientPath
+          clientPath,
         ],
         exclude: [
-          /node_modules/
+          /node_modules/,
         ],
         use: [
           {
@@ -65,11 +65,11 @@ export default {
               plugins: [
                 'transform-runtime',
                 'react-hot-loader/babel',
-              ]
-            }
+              ],
+            },
 
-          }
-        ]
+          },
+        ],
       },
       {
         test: /\.css$/,
@@ -94,8 +94,8 @@ export default {
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[ext]' // [name]___[hash:base64:5].[ext]
-            }
+              name: '[name].[ext]', // [name]___[hash:base64:5].[ext]
+            },
           },
           {
             loader: 'svgo-loader',
@@ -103,11 +103,11 @@ export default {
               plugins: [
                 {removeTitle: true},
                 {convertColors: {shorthex: false}},
-                {convertPathData: false}
-              ]
-            }
-          }
-        ]
+                {convertPathData: false},
+              ],
+            },
+          },
+        ],
       },
       // TODO: icon fonts vs icon sprites
       {
@@ -115,11 +115,11 @@ export default {
         loader: ExtractTextPlugin.extract({
           use: [
             'css-loader',
-            'fontgen-loader?embed'
-          ]
-        })
-      }
-    ]
+            'fontgen-loader?embed',
+          ],
+        }),
+      },
+    ],
   },
 
   devtool: 'source-map',
@@ -129,7 +129,7 @@ export default {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
     }),
-  ]
+  ],
 }

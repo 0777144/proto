@@ -1,4 +1,3 @@
-import path from 'path'
 import express from 'express'
 import compression from 'compression'
 import bodyParser from 'body-parser'
@@ -42,7 +41,7 @@ mongoose.connect(process.env.MONGO_URL, {useMongoClient: true}, error => {
   }
 
   // seed some dummy data in DB.
-   seed()
+  seed()
 })
 
 // Apply body Parser and server public assets and routes

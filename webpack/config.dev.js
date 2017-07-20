@@ -20,7 +20,7 @@ export default {
       'webpack-hot-middleware/client',
       'react-hot-loader/patch',
       './index.jsx',
-    ]
+    ],
   },
 
   output: {
@@ -151,14 +151,14 @@ export default {
       plugins: [
         new webpack.ContextReplacementPlugin(
           // The path to directory which should be handled by this plugin
-          /moment[\/\\]locale/,
+          /moment[/\\]locale/,
           // A regular expression matching files that should be included
-          /(en-gb|ru)\.js/
+          /(en-gb|ru)\.js/,
         ),
       ],
     }),
-    function() {
-      this.plugin('done', () => console.log('Build ended:', moment().format('HH:mm:ss')));
+    function () {
+      this.plugin('done', () => console.log('Build ended:', moment().format('HH:mm:ss'))) // eslint-disable-line no-console
     },
-  ]
+  ],
 }

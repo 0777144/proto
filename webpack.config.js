@@ -1,7 +1,7 @@
 require('dotenv').config()
 require('babel-register')({
   cache: true,
-  plugins: ['transform-es2015-modules-commonjs']
+  plugins: ['transform-es2015-modules-commonjs'],
 })
 
 if (process.env.NODE_ENV === 'production') {

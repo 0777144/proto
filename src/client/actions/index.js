@@ -14,7 +14,7 @@ export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export function receivePosts(posts) {
   return {
     type: RECEIVE_POSTS,
-    posts: posts,
+    posts,
   }
 }
 
@@ -42,7 +42,7 @@ export const RECEIVE_POST = 'RECEIVE_POST'
 export function receivePost(post) {
   return {
     type: RECEIVE_POST,
-    post: post,
+    post,
   }
 }
 
@@ -62,9 +62,9 @@ export function createPost(data) {
     Request
       .post('/api/posts')
       .send({
-        post: data
+        post: data,
       })
-      .then(data => data.body.post)
+      .then(response => response.body.post)
       .then(post => dispatch(push(`/posts/${post.slug}`)))
   }
 }

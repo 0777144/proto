@@ -2,6 +2,10 @@
   "extends": "airbnb",
   "parser": "babel-eslint",
   "rules": {
+    "semi": ["error", "never"],
+    "arrow-parens": ["error", "as-needed"],
+    "func-names": ["error", "never"],
+
     "global-require": 0,
     "import/no-dynamic-require": 0,
     "import/no-unresolved": [0, {"ignore": ["scss"]}],

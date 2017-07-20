@@ -8,8 +8,8 @@ export default {
     plugins: [
       precss({
         import: {
-          extension: '.scss'
-        }
+          extension: '.scss',
+        },
       }),
       autoprefixer(),
     ],
