@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 
-import Form from 'components/form'
-import Input from 'components/input'
-import Button from 'components/button'
+import Form from '../form'
+import Input from '../input'
+import Button from '../button'
 
 class PostFormCreate extends Component {
   constructor(props) {

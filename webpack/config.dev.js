@@ -141,6 +141,7 @@ export default {
           'react-router',
           'react-router-dom',
           'react-router-redux',
+          'recompose',
           'redux',
           'redux-logger',
           'redux-thunk',

@@ -1,23 +1,27 @@
 import React from 'react'
 
 import withStyles from '../../styles/withStyles'
+import Link from '../link'
 import Markdown from '../markdown'
 import styles from './styles'
 
-const Post = ({
+const PostListItem = ({
   classes,
   title,
-  content,
+  slug,
+  entrance,
   createdAt,
   onClick,
 }) => (
   <article className={classes.post}>
     <header className={classes.header}>
-      <h2 className={classes.title}>{title}</h2>
+      <h2 className={classes.title}>
+        <Link to={`/posts/${slug}`}>{title}</Link>
+      </h2>
       <aside className={classes.date}>{createdAt}</aside>
     </header>
-    <Markdown content={content}/>
+    <Markdown content={entrance}/>
   </article>
 )
 
-export default withStyles(styles)(Post)
+export default withStyles(styles)(PostListItem)

@@ -1,11 +1,12 @@
 import React from 'react'
 
+import withStyles from '../../styles/withStyles'
 import styles from './styles'
 
 const createMarkup = html => ({__html: html})
 
-const Markdown = ({content}) => (
-  <section className={styles.markdown} dangerouslySetInnerHTML={createMarkup(content)}/>
+const Markdown = ({content, classes, ...props}) => (
+  <section {...props} className={classes.markdown} dangerouslySetInnerHTML={createMarkup(content)}/>
 )
 
-export default Markdown
+export default withStyles(styles)(Markdown)

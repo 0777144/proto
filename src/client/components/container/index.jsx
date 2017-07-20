@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
+import withStyles from '../../styles/withStyles'
 import styles from './styles'
 
 const Container = ({
@@ -8,9 +9,9 @@ const Container = ({
   children,
   ...props,
 }) => (
-  <div className={classNames(className, styles.container)}>
+  <div className={classNames(className, props.classes.container)}>
     {children}
   </div>
 )
 
-export default  Container
+export default withStyles(styles)(Container)

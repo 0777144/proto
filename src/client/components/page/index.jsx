@@ -1,12 +1,13 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-import Container from '../container';
-import PageHeader from '../page-header';
-import styles from './styles';
+import withStyles from '../../styles/withStyles'
+import Container from '../container'
+import PageHeader from '../page-header'
+import styles from './styles'
 
-const Page = (props) => (
-  <main className={styles.page}>
+const Page = ({classes, ...props}) => (
+  <main className={classes.page}>
     <Container>
       <PageHeader title={props.title}>
         {props.header}
@@ -17,4 +18,4 @@ const Page = (props) => (
   </main>
 )
 
-export default Page
+export default withStyles(styles)(Page)

@@ -27,8 +27,9 @@ export function getPosts(req, res) {
  * @returns void
  */
 export function addPost(req, res) {
+  // TODO: возврашать норм ошибку
   if (!req.body.post.title || !req.body.post.content) {
-    res.status(403).end()
+    return res.status(403).end()
   }
 
   const newPost = new Post(req.body.post)
@@ -43,11 +44,13 @@ export function addPost(req, res) {
   // TODO: ensure slug doesn't exist
   newPost.slug = slug(newPost.title, {lowercase: true})
   newPost.cuid = cuid()
+
   newPost.save((err, saved) => {
     if (err) {
       res.status(500).send(err)
+    } else {
+      res.json({post: saved})
     }
-    res.json({post: saved})
   })
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import withStyles from '../../styles/withStyles'
 import styles from './styles'
 
 class Input extends React.Component {
@@ -9,17 +10,18 @@ class Input extends React.Component {
   }
 
   render() {
-    return this.props.type === 'textarea' ? (
+    const {classes, ...props} = this.props
+    return props.type === 'textarea' ? (
       <textarea
-        {...this.props}
+        {...props}
         role='textbox'
-        className={styles.input}
+        className={classes.input}
         ref="input"
       />
         ) : (
       <input
-        {...this.props}
-        className={styles.input}
+        {...props}
+        className={classes.input}
         ref='input'
       />
     )
@@ -31,4 +33,4 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
 }
 
-export default Input
+export default withStyles(styles)(Input)

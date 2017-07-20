@@ -2,18 +2,20 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import classNames from 'classnames'
 
+import withStyles from '../../styles/withStyles'
 import styles from './styles'
 
 const Button = ({
   text,
   children,
-  className,
+  className: classNameProp,
+  classes,
   ...props
 }) => {
-  className = classNames(
-    className,
-    styles.button,
-    {[styles.icon]: props.type === 'icon'}
+  const className = classNames(
+    classNameProp,
+    classes.button,
+    {[classes.icon]: props.type === 'icon'}
   )
 
   return !props.to ? (
@@ -33,4 +35,4 @@ const Button = ({
   )
 }
 
-export default Button
+export default withStyles(styles)(Button)
