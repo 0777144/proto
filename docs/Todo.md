@@ -32,7 +32,9 @@
 * оптимизация сборки https://survivejs.com/webpack/optimizing/performance/
 * авторизация https://vladimirponomarev.com/blog/authentication-in-react-apps-jwt
 * postcss plugin order?
-
+* bundle favicons
+  * https://medium.com/tech-angels-publications/bundle-your-favicons-with-webpack-b69d834b2f53
+  * https://github.com/jantimon/favicons-webpack-plugin
 
 [webpack 2.2.1]: https://github.com/webpack/webpack/tree/v2.2.1
 [ES6]: http://es6-features.org/
