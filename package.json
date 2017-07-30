@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "server": "nodemon server.js",
-    "webpack": "webpack --config webpack/config.js",
-    "build": "npm run webpack --  --progress",
+    "server": "nodemon --quiet server.js",
     "clear:build": "rm -rf public/dist",
     "clear:storage": "rm -rf storage/database/*",
     "clear": "npm run clear:build & npm run clear:storage",
