@@ -66,6 +66,7 @@
     "babel-preset-stage-3": "^6.24.1",
     "babel-register": "^6.24.1",
     "chalk": "^2.0.1",
+    "clean-terminal-webpack-plugin": "^1.0.0",
     "css-loader": "^0.26.1",
     "eslint": "^3.17.0",
     "eslint-config-airbnb": "^14.1.0",

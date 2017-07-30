@@ -6,18 +6,16 @@ import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 
-import webpackConfig from '../../webpack.config'
+// FIXME: сделать пути относительно корня NODE_PATH
+import webpackConfig from '../../webpack/client.dev'
 import handleRender from './handleRender'
-import logger from './logger'
+import logger from '../../tools/logger'
 import router from './router'
 import seed from './seeds'
 
 const app = express()
 
-// TODO: add HOST to .env.example and .env
-// get the intended host and port number, use localhost and port 3000 if not provided
-const host = process.env.HOST || null // Let http.Server use its default IPv6/4 host
-const prettyHost = host || 'localhost'
+// TODO: add NODE_HOST to .env.example and .env
 
 // Run Webpack dev server in development mode
 if (process.env.NODE_ENV !== 'production') {
@@ -70,11 +68,12 @@ app.use('/api', router)
 // This is fired every time the server side receives a request
 app.use(handleRender)
 
-app.listen(process.env.NODE_PORT, process.env.HOST, err => {
+app.listen(process.env.NODE_PORT, process.env.NODE_HOST, err => {
   if (err) {
     logger.error(err.message)
     return
   }
 
-  logger.appStarted(process.env.NODE_PORT, prettyHost)
+  logger.log('Server started!')
+  logger.appStarted(process.env.NODE_PORT, process.env.NODE_HOST)
 })

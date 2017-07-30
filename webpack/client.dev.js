@@ -3,7 +3,9 @@ import webpack from 'webpack'
 import moment from 'moment'
 import chalk from 'chalk'
 import AutoDllPlugin from 'autodll-webpack-plugin'
+import CleanTerminalPlugin from 'clean-terminal-webpack-plugin'
 
+import logger from '../tools/logger'
 import cssLoader from './css-loader'
 import postcssLoader from './postcss-loader'
 
@@ -20,7 +22,8 @@ export default {
     app: [
       'webpack-hot-middleware/client',
       'react-hot-loader/patch',
-      './index.jsx',
+      '../../tools/dev-console.js',
+      './index.js',
     ],
   },
 
@@ -120,7 +123,6 @@ export default {
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
@@ -158,8 +160,13 @@ export default {
         ),
       ],
     }),
+    new webpack.NamedModulesPlugin(),
+    new CleanTerminalPlugin(),
     function () {
-      this.plugin('done', () => console.log(chalk.cyan('Build completed at'), chalk.cyan.bold(moment().format('HH:mm:ss')))) // eslint-disable-line no-console
+      this.plugin('done', () => {
+        logger.appStarted(process.env.NODE_PORT, process.env.NODE_HOST)
+        logger.log(chalk.cyan('Build completed at'), chalk.cyan.bold(moment().format('HH:mm:ss')))
+      })
     },
   ],
 }
