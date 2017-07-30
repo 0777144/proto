@@ -159,7 +159,7 @@ export default {
       ],
     }),
     function () {
-      this.plugin('done', () => console.log(chalk.cyan('Build ended:'), chalk.cyan.bold(moment().format('HH:mm:ss')))) // eslint-disable-line no-console
+      this.plugin('done', () => console.log(chalk.cyan('Build completed at'), chalk.cyan.bold(moment().format('HH:mm:ss')))) // eslint-disable-line no-console
     },
   ],
 }

@@ -8,10 +8,16 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 
 import webpackConfig from '../../webpack.config'
 import handleRender from './handleRender'
+import logger from './logger'
 import router from './router'
 import seed from './seeds'
 
 const app = express()
+
+// TODO: add HOST to .env.example and .env
+// get the intended host and port number, use localhost and port 3000 if not provided
+const host = process.env.HOST || null // Let http.Server use its default IPv6/4 host
+const prettyHost = host || 'localhost'
 
 // Run Webpack dev server in development mode
 if (process.env.NODE_ENV !== 'production') {
@@ -34,10 +40,11 @@ if (process.env.NODE_ENV !== 'production') {
 mongoose.Promise = global.Promise
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URL, {useMongoClient: true}, error => {
-  if (error) {
-    console.error('Please make sure Mongodb is installed and running!') // eslint-disable-line no-console
-    throw error
+mongoose.connect(process.env.MONGO_URL, {useMongoClient: true}, err => {
+  if (err) {
+    logger.error('Please make sure Mongodb is installed and running!') // eslint-disable-line no-console
+    logger.error(err.message)
+    return
   }
 
   // seed some dummy data in DB.
@@ -63,6 +70,11 @@ app.use('/api', router)
 // This is fired every time the server side receives a request
 app.use(handleRender)
 
-app.listen(process.env.NODE_PORT, () => {
-  console.log(`Server started: http://localhost:${process.env.NODE_PORT}`) // eslint-disable-line no-console
+app.listen(process.env.NODE_PORT, process.env.HOST, err => {
+  if (err) {
+    logger.error(err.message)
+    return
+  }
+
+  logger.appStarted(process.env.NODE_PORT, prettyHost)
 })

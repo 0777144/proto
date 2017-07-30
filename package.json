@@ -10,7 +10,9 @@
     "clear": "npm run clear:build & npm run clear:storage",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["react"],
+  "keywords": [
+    "react"
+  ],
   "author": {
     "name": "tor",
     "email": "0777144@gmail.com"
@@ -30,6 +32,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.14.1",
     "history": "^4.6.1",
+    "ip": "^1.1.5",
     "limax": "^1.5.0",
     "markdown-it": "^8.3.1",
     "moment": "^2.18.1",
