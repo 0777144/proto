@@ -6,6 +6,8 @@ import AutoDllPlugin from 'autodll-webpack-plugin'
 import CleanTerminalPlugin from 'clean-terminal-webpack-plugin'
 
 import logger from '../tools/logger'
+// TODO: А он точно нужен, сделать бенчмарк
+import cacheLoader from './cache-loader'
 import cssLoader from './css-loader'
 import postcssLoader from './postcss-loader'
 
@@ -61,6 +63,7 @@ export default {
           /node_modules/,
         ],
         use: [
+          cacheLoader,
           {
             loader: 'babel-loader',
             options: {
@@ -81,6 +84,7 @@ export default {
       {
         test: /\.(scss|css)$/,
         use: [
+          cacheLoader,
           'style-loader',
           cssLoader,
           postcssLoader,
