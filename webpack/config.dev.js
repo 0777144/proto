@@ -1,6 +1,7 @@
 import path from 'path'
 import webpack from 'webpack'
 import moment from 'moment'
+import chalk from 'chalk'
 import AutoDllPlugin from 'autodll-webpack-plugin'
 
 import cssLoader from './css-loader'
@@ -158,7 +159,7 @@ export default {
       ],
     }),
     function () {
-      this.plugin('done', () => console.log('Build ended:', moment().format('HH:mm:ss'))) // eslint-disable-line no-console
+      this.plugin('done', () => console.log(chalk.cyan('Build ended:'), chalk.cyan.bold(moment().format('HH:mm:ss')))) // eslint-disable-line no-console
     },
   ],
 }
