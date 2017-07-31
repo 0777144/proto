@@ -1,3 +1,4 @@
+/* stylelint-disable */
 
 /* Была какая-то бага со шрифтами при раработке в дев режиме, прищлось вынести импорт шрифтов в отдельный файл */
 @import url(https://fonts.googleapis.com/css?family=Averia+Sans+Libre:400,300);
@@ -7,12 +8,12 @@
 
 html
 {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 body
 {
-    font-family: 'Open Sans', sans-serif;
-    margin: 0 0 85px; /* bottom = footer height + 20 = 65 + 20*/
+  font-family: 'Open Sans', sans-serif;
+  margin: 0 0 85px; /* bottom = footer height + 20 = 65 + 20*/
 }

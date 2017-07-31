@@ -1,28 +1,23 @@
 @import '../../styles/variables';
 
-.container
-{
-    width: 100%;
-    max-width: $container-width;
-    margin: 0 auto;
-    padding: 0 $container-padding;
+.container {
+  width: 100%;
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
 }
 
 // плавный переход отступов
-@media (max-width: $screen-xs-min + $container-padding * 2)
-{
-    .container
-    {
-        width: $screen-xs-min;
-        padding: 0;
-    }
+@media (max-width: $screen-xs-min + $container-padding * 2) {
+  .container {
+    width: $screen-xs-min;
+    padding: 0;
+  }
 }
 
-@media (max-width: $screen-xs-min)
-{
-    .container
-    {
-        width: 100%;
-        padding: 0;
-    }
+@media (max-width: $screen-xs-min) {
+  .container {
+    width: 100%;
+    padding: 0;
+  }
 }

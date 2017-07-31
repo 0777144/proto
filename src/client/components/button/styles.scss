@@ -1,34 +1,28 @@
 @import '../../styles/colors';
 
-.button
-{
-    border: 1px solid $lightgray;
-    background: none;
-    font-size: 14px;
-    line-height: 20px;
-
-    font-weight: 500;
-
-    display: inline-block;
-    text-shadow: none;
-    padding: 6px 12px;
-    border-radius: 3px;
-    cursor: pointer;
+.button {
+  border: 1px solid $lightgray;
+  background: none;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  display: inline-block;
+  text-shadow: none;
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
-.button:hover
-{
-    border-color: $lightblue;
+.button:hover {
+  border-color: $lightblue;
 }
 
-.button.icon
-{
-    border: none;
-    text-decoration: none;
-    color: #000;
+.button.icon {
+  border: none;
+  text-decoration: none;
+  color: #000;
 }
 
-.button.icon:hover
-{
-    color: $blue;
+.button.icon:hover {
+  color: $blue;
 }

@@ -1,32 +1,24 @@
 @import '../../styles/variables';
 @import '../../styles/colors';
 
-.post
-{
-    margin-top: 20px;
-    padding: 20px;
-
-    border: 1px solid $lightgray;
+.post {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid $lightgray;
 }
 
-.header
-{
-    margin-bottom: 10px;
+.header {
+  margin-bottom: 10px;
 }
 
-.title
-{
-    font-family: 'Roboto Slab', serif;
-    font-size: 32px;
-
-    font-weight: bold;
+.title {
+  font-family: 'Roboto Slab', serif;
+  font-size: 32px;
+  font-weight: bold;
 }
 
-.date
-{
-    display: block;
-
-    margin-top: 5px;
-
-    color: #bbb;
+.date {
+  display: block;
+  margin-top: 5px;
+  color: #bbb;
 }

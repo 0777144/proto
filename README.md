@@ -53,6 +53,11 @@ or
 yarn server
 ```
 
+## Linting
+
+```bash
+npx stylelint src/**/*.scss --syntax scss
+```
 
 ## Features
 

@@ -1,20 +1,18 @@
 @import '../../styles/variables';
 @import '../../styles/colors';
 
-.input
-{
-    padding: 5px;
-    border: 2px solid $lightgray;
-    font-size: 16px;
-    line-height: 24px;
-    max-width: 500px;
-    width: 100%;
-    margin-bottom: 10px;
-    border-radius: 3px;
+.input {
+  padding: 5px;
+  border: 2px solid $lightgray;
+  font-size: 16px;
+  line-height: 24px;
+  max-width: 500px;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 3px;
 }
 
-.input:focus
-{
-    outline: none;
-    border-color: $lightblue;
+.input:focus {
+  outline: none;
+  border-color: $lightblue;
 }

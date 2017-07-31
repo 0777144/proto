@@ -7,7 +7,7 @@ require('babel-register')({
 })
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = require('./webpack/config.dev')
+  module.exports = require('./webpack/lint.dev')
 } else {
-  module.exports = require('./webpack/config.dev')
+  module.exports = require('./webpack/lint.dev')
 }

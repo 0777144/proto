@@ -6,7 +6,8 @@ import AutoDllPlugin from 'autodll-webpack-plugin'
 import CleanTerminalPlugin from 'clean-terminal-webpack-plugin'
 
 import logger from '../tools/logger'
-// TODO: А он точно нужен, сделать бенчмарк
+import babelLoader from './babel-loader'
+// TODO: А cache-loader точно нужен, сделать бенчмарк
 import cacheLoader from './cache-loader'
 import cssLoader from './css-loader'
 import postcssLoader from './postcss-loader'
@@ -18,6 +19,9 @@ const publicPath = '/dist/'
 
 export default {
   cache: true,
+
+  // The base directory, an absolute path, for resolving entry points and
+  // loaders from configuration.
   context: clientPath,
 
   entry: {
@@ -31,8 +35,12 @@ export default {
 
   output: {
     filename: '[name].bundle.js',
+
+    // The output directory as an absolute path.
     path: distPath,
-    pathinfo: true,
+
+    // This option specifies the public URL of the output directory
+    // when referenced in a browser.
     publicPath,
     chunkFilename: '[id].js',
   },
@@ -59,26 +67,13 @@ export default {
         include: [
           clientPath,
         ],
+        // TODO: нужен ли тут exclude, если выше есть include?
         exclude: [
           /node_modules/,
         ],
         use: [
           cacheLoader,
-          {
-            loader: 'babel-loader',
-            options: {
-              cacheDirectory: true,
-              presets: [
-                'react',
-                'stage-3',
-                ['es2015', {modules: false}],
-              ],
-              plugins: [
-                'transform-runtime',
-                'react-hot-loader/babel',
-              ],
-            },
-          },
+          babelLoader,
         ],
       },
       {

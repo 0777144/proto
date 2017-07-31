@@ -1,34 +1,30 @@
 @import '../../styles/variables';
 @import '../../styles/colors';
 
-.link
-{
-    color: $blue;
-    text-decoration: none;
-    background: transparent;
+.link {
+  color: $blue;
+  text-decoration: none;
+  background: transparent;
 
-    &:hover,
-    &:focus,
-    &:active {
-        outline: 0;
-        text-decoration: underline;
-    }
+  &:hover,
+  &:focus,
+  &:active {
+    outline: 0;
+    text-decoration: underline;
+  }
 }
 
-.clear
-{
-    font-size: 24px;
+.clear {
+  font-size: 24px;
+  transition: ease-out color .3s;
+  text-decoration: none;
+  color: #0a0a0a;
 
-    transition: ease-out color .3s;
+  &:hover,
+  &:focus,
+  &:active {
+    color: #333;
+    outline: 0;
     text-decoration: none;
-
-    color: #0A0A0A;
-
-    &:hover,
-    &:focus,
-    &:active {
-        color: #333333;
-        outline: 0;
-        text-decoration: none;
-    }
+  }
 }

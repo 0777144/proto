@@ -1,5 +1,6 @@
 # Todo
 
+* https://github.com/th0r/webpack-bundle-analyzer
 * ~~tree-shaking~~
 * SSR (isomorphic) [react-isomorphic-starterkit]
 * ~~redux~~

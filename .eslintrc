@@ -35,3 +35,6 @@ rules:
   # FIXME
   react/prop-types: off
 
+  # deprecated
+  react/jsx-space-before-closing: off
+

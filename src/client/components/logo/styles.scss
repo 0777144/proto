@@ -1,11 +1,8 @@
 $logo: './proto.svg';
 
-.proto-logo
-{
-    display: inline-block;
-
-    width: 78px;
-    height: 32px;
-
-    background: url($logo) no-repeat;
+.proto-logo {
+  display: inline-block;
+  width: 78px;
+  height: 32px;
+  background: url($logo) no-repeat;
 }
