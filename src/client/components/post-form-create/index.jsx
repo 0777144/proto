@@ -11,9 +11,9 @@ class PostFormCreate extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleSubmit(event){
+  handleSubmit(event) {
     event.preventDefault()
-    
+
     this.props.onSubmit({
       title: this.refs.title.getValue(),
       content: this.refs.content.getValue(),

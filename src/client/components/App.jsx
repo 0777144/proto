@@ -3,7 +3,7 @@ import {Route} from 'react-router'
 
 import 'styles/reset.css'
 import 'styles/index.css'
-import 'styles/icon.font.js'
+// import 'styles/icon.font.js'
 
 import Layout from './layout'
 import PagePosts from '../pages/PagePosts'
