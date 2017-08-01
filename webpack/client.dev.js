@@ -162,7 +162,7 @@ export default {
       ],
     }),
     new webpack.NamedModulesPlugin(),
-    new CleanTerminalPlugin(),
+    // new CleanTerminalPlugin(),
     function () {
       this.plugin('done', () => {
         logger.appStarted(process.env.NODE_PORT, process.env.NODE_HOST)

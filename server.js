@@ -15,8 +15,28 @@ if (process.env.NODE_ENV === 'production') {
       'react',
       'stage-3',
     ],
-    plugins: ['transform-es2015-modules-commonjs'],
+    plugins: [
+      'transform-es2015-modules-commonjs',
+      [
+        'css-modules-transform', {
+          preprocessCss: 'tools/process-postcss.js',
+          generateScopedName: '[name]__[local]___[hash:base64:5]',
+          processorOpts: {parser: require('postcss-scss').parse},
+          extensions: [
+            '.css',
+            '.scss',
+          ],
+        },
+      ],
+    ],
+    extensions: [
+      '.js',
+      '.jsx',
+      '.scss',
+      '.css',
+    ],
   })
+  require('ignore-styles').default(['.css', '.scss'])
 
   require('./src/server/index')
 }

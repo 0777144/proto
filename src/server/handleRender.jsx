@@ -1,5 +1,23 @@
 import React from 'react'
 import {renderToString} from 'react-dom/server'
+import {Provider} from 'react-redux'
+import {StaticRouter} from 'react-router-dom'
+import {
+  createStore,
+  applyMiddleware,
+} from 'redux'
+import thunkMiddleware from 'redux-thunk'
+
+import rootReducer from '../client/reducers'
+import App from '../client/components/App'
+
+const configureStore = initialState =>
+  createStore(
+    rootReducer,
+    initialState,
+    applyMiddleware(thunkMiddleware),
+  )
+const store = configureStore()
 
 function renderFullPage(html, preloadedState) {
   return `
@@ -40,14 +58,24 @@ function renderFullPage(html, preloadedState) {
 }
 
 function handleRender(req, res) {
+  const context = {}
+
   // Render the component to a string
   const html = renderToString(
-    <div>Loading...</div>
+    <Provider store={store}>
+      <StaticRouter location={req.url} context={context}>
+        <App/>
+      </StaticRouter>
+    </Provider>
   )
 
+  if (context.url) {
+    res.redirect(302, context.url)
+    return
+  }
+
   // Grab the initial state from our Redux store
-  // const preloadedState = store.getState()
-  const preloadedState = {}
+  const preloadedState = store.getState()
 
   // Send the rendered page back to the client
   res.send(renderFullPage(html, preloadedState))
