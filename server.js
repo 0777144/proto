@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
       'transform-es2015-modules-commonjs',
       [
         'css-modules-transform', {
-          preprocessCss: 'tools/process-postcss.js',
+          // preprocessCss: 'tools/process-postcss.js',
           generateScopedName: '[name]__[local]___[hash:base64:5]',
           processorOpts: {parser: require('postcss-scss').parse},
           extensions: [
