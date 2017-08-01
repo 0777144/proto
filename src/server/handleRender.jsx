@@ -1,20 +1,6 @@
 import React from 'react'
 import {renderToString} from 'react-dom/server'
 
-function handleRender(req, res) {
-  // Render the component to a string
-  const html = renderToString(
-    <div>Loading...</div>
-  )
-
-  // Grab the initial state from our Redux store
-  // const preloadedState = store.getState()
-  const preloadedState = {}
-
-  // Send the rendered page back to the client
-  res.send(renderFullPage(html, preloadedState))
-}
-
 function renderFullPage(html, preloadedState) {
   return `
     <!doctype html lang="ru">
@@ -51,6 +37,20 @@ function renderFullPage(html, preloadedState) {
         <script src="/dist/app.bundle.js"></script>
     </body>
     </html>`
+}
+
+function handleRender(req, res) {
+  // Render the component to a string
+  const html = renderToString(
+    <div>Loading...</div>
+  )
+
+  // Grab the initial state from our Redux store
+  // const preloadedState = store.getState()
+  const preloadedState = {}
+
+  // Send the rendered page back to the client
+  res.send(renderFullPage(html, preloadedState))
 }
 
 export default handleRender
