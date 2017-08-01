@@ -46,9 +46,11 @@ export default {
   },
 
   resolve: {
+    // Allow absolute paths in imports, e.g. import Button from 'components/Button'
+    // Keep in sync with .flowconfig and .eslintrc
     modules: [
       clientPath,
-      path.join(rootPath, 'node_modules'),
+      'node_modules',
     ],
     extensions: [
       '.js',
