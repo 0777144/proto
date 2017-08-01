@@ -2,7 +2,7 @@ import React from 'react'
 import Container from '../container'
 
 import withStyles from '../../styles/withStyles'
-import styles from './styles'
+import styles from './styles.scss'
 
 const Nav = ({classes, ...props}) => (
   <nav className={classes.nav}>

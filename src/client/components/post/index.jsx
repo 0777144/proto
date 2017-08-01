@@ -2,7 +2,7 @@ import React from 'react'
 
 import withStyles from '../../styles/withStyles'
 import Markdown from '../markdown'
-import styles from './styles'
+import styles from './styles.scss'
 
 const Post = ({
   classes,

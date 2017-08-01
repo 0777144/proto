@@ -3,7 +3,7 @@ import React from 'react'
 import withStyles from '../../styles/withStyles'
 import Link from '../link'
 import Markdown from '../markdown'
-import styles from './styles'
+import styles from './styles.scss'
 
 const PostListItem = ({
   classes,

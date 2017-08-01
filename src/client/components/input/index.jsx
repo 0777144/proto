@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import withStyles from '../../styles/withStyles'
-import styles from './styles'
+import styles from './styles.scss'
 
 class Input extends React.Component {
   getValue() {

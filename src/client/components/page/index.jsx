@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import withStyles from '../../styles/withStyles'
 import Container from '../container'
 import PageHeader from '../page-header'
-import styles from './styles'
+import styles from './styles.scss'
 
 const Page = ({classes, ...props}) => (
   <main className={classes.page}>
