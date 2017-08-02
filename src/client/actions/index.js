@@ -19,12 +19,11 @@ export function receivePosts(posts) {
 }
 
 export function fetchPosts() {
-  return function (dispatch) {
+  return function (dispatch, getState, Api) {
     dispatch(requestPosts())
 
-    Request
-      .get('/api/posts')
-      .then(data => data.body.posts)
+    Api
+      .fetchPosts()
       .then(posts => dispatch(receivePosts(posts)))
   }
 }
@@ -47,24 +46,19 @@ export function receivePost(post) {
 }
 
 export function fetchPost(slug) {
-  return function (dispatch) {
+  return function (dispatch, getState, Api) {
     dispatch(requestPost())
 
-    Request
-      .get(`/api/posts/${slug}`)
-      .then(data => data.body.post)
+    Api
+      .fetchPost(slug)
       .then(post => dispatch(receivePost(post)))
   }
 }
 
 export function createPost(data) {
-  return function (dispatch) {
-    Request
-      .post('/api/posts')
-      .send({
-        post: data,
-      })
-      .then(response => response.body.post)
+  return function (dispatch, getState, Api) {
+    Api
+      .createPost(data)
       .then(post => dispatch(push(`/posts/${post.slug}`)))
   }
 }

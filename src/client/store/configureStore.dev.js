@@ -11,14 +11,14 @@ import {routerMiddleware} from 'react-router-redux'
 import history from '../history'
 import rootReducer from '../reducers'
 
-const configureStore = initialState => {
+const configureStore = (api, initialState) => {
   const loggerMiddleware = createLogger()
   const store = createStore(
     rootReducer,
     initialState,
     applyMiddleware(
       routerMiddleware(history),
-      thunkMiddleware,
+      thunkMiddleware.withExtraArgument(api),
       loggerMiddleware,
     ),
   )

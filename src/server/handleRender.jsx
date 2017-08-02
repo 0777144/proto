@@ -10,14 +10,17 @@ import thunkMiddleware from 'redux-thunk'
 
 import rootReducer from '../client/reducers'
 import App from '../client/components/App'
+import Api from '../client/api'
 
-const configureStore = initialState =>
+const api = new Api('http://localhost:3000')
+
+const configureStore = (api, initialState) => // eslint-disable-line no-shadow
   createStore(
     rootReducer,
     initialState,
-    applyMiddleware(thunkMiddleware),
+    applyMiddleware(thunkMiddleware.withExtraArgument(api)),
   )
-const store = configureStore()
+const store = configureStore(api)
 
 function renderFullPage(html, preloadedState) {
   return `

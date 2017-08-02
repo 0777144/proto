@@ -5,10 +5,12 @@ import {Provider} from 'react-redux'
 import {ConnectedRouter} from 'react-router-redux'
 
 import App from './components/App'
+import Api from './api'
 import history from './history'
 import configureStore from './store/configureStore'
 
-const store = configureStore()
+const api = new Api()
+const store = configureStore(api)
 const rootEl = document.getElementById('root')
 
 const renderApp = () => {
