@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "server": "nodemon --quiet server.js",
+    "start": "nodemon --quiet server.js",
     "lint-js": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" .",
     "lint-css": "stylelint \"src/**/*.{css,scss}\"",
     "lint": "yarn run lint-js && yarn run lint-css",
